@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Photos by Alexandra Lynn | Tri-Cities, WA Photographer</title>
+  <meta name="description" content="Wedding, portrait & family photographer in Tri-Cities, WA. Warm, romantic, real. Available to travel anywhere."/>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%237EB5C8'/><text x='16' y='23' font-family='serif' font-size='20' font-weight='bold' fill='white' text-anchor='middle'>A</text></svg>"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Photos by Alexandra Lynn | Tri-Cities, WA Photographer"/>
+  <meta property="og:description" content="Wedding, portrait & family photographer in Tri-Cities, WA. Warm, romantic, real. Available to travel anywhere."/>
+  <meta property="og:url" content="https://photosbyalexandralynn.com"/>
+  <meta name="twitter:card" content="summary"/>
+
+  <!-- Schema: Local Business -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Photos by Alexandra Lynn",
+    "description": "Wedding, portrait & family photographer based in Tri-Cities, WA. Available to travel anywhere.",
+    "email": "photosbyalexandralynn@gmail.com",
+    "url": "https://photosbyalexandralynn.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kennewick",
+      "addressRegion": "WA",
+      "addressCountry": "US"
+    },
+    "areaServed": ["Kennewick", "Richland", "Pasco", "Tri-Cities", "Eastern Washington"],
+    "sameAs": [
+      "https://instagram.com/photosbyalexandralynn",
+      "https://www.facebook.com/profile.php?id=61590753842857"
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:  #FFFFFF;
+      --off:    #FAFAF8;
+      --blue:   #7EB5C8;
+      --blue-dk:#5C9DB5;
+      --mauve:  #B89BA6;
+      --text:   #1A1A1A;
+      --body:   #3D3D3D;
+      --light:  #6A6A6A;
+      --border: rgba(126,181,200,.22);
+      --border-solid: #DDE8EC;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Jost', sans-serif; font-weight: 300; color: var(--body); background: var(--white); line-height: 1.75; overflow-x: hidden; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── PAGE SYSTEM ─────────────────────────────────────────── */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ─── NAV ────────────────────────────────────────────────── */
+    #site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 3rem;
+      transition: background .35s, padding .35s, box-shadow .35s;
+    }
+    #site-nav.scrolled, #site-nav.solid {
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(12px);
+      padding: 1rem 3rem;
+      box-shadow: 0 1px 0 var(--border-solid);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700; letter-spacing: .03em;
+      color: white; transition: color .3s; cursor: pointer;
+    }
+    #site-nav.scrolled .nav-logo,
+    #site-nav.solid .nav-logo { color: var(--text); }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      font-size: .66rem; letter-spacing: .18em; text-transform: uppercase;
+      color: rgba(255,255,255,.82); transition: color .25s; cursor: pointer;
+    }
+    #site-nav.scrolled .nav-links a,
+    #site-nav.solid .nav-links a { color: var(--light); }
+    .nav-links a:hover,
+    #site-nav.scrolled .nav-links a:hover,
+    #site-nav.solid .nav-links a:hover { color: var(--blue); }
+    .nav-links a.active-page { color: var(--blue) !important; }
+    .nav-cta {
+      font-size: .64rem; letter-spacing: .16em; text-transform: uppercase;
+      padding: .55rem 1.4rem; border: 1px solid rgba(255,255,255,.5);
+      color: white; transition: all .25s; cursor: pointer;
+    }
+    #site-nav.scrolled .nav-cta,
+    #site-nav.solid .nav-cta { border-color: var(--blue); color: var(--blue); }
+    .nav-cta:hover { background: var(--blue); border-color: var(--blue); color: white !important; }
+
+    /* ─── MOBILE NAV ─────────────────────────────────────────── */
+    .nav-ham {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      padding: .4rem; background: none; border: none;
+    }
+    .nav-ham span {
+      display: block; width: 22px; height: 1.5px;
+      background: white; transition: background .3s, transform .3s, opacity .3s;
+    }
+    #site-nav.scrolled .nav-ham span,
+    #site-nav.solid .nav-ham span { background: var(--text); }
+    .nav-ham.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-ham.open span:nth-child(2) { opacity: 0; }
+    .nav-ham.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .nav-mobile {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(255,255,255,.98); backdrop-filter: blur(16px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700;
+      color: var(--text); cursor: pointer; transition: color .2s;
+    }
+    .nav-mobile a:hover { color: var(--blue); }
+    .nav-mobile .nav-mob-cta {
+      font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+      padding: .9rem 2.4rem; border: 1px solid var(--blue); color: var(--blue);
+      cursor: pointer; transition: all .25s; margin-top: 1rem;
+    }
+    .nav-mobile .nav-mob-cta:hover { background: var(--blue); color: white; }
+
+    /* ─── SHARED COMPONENTS ──────────────────────────────────── */
+    .eyebrow {
+      font-size: .62rem; letter-spacing: .28em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 1rem; display: block;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700; color: var(--text); line-height: 1.1; margin-bottom: 1.6rem;
+    }
+    .section-title em { font-style: italic; }
+    .page-header {
+      padding: 10rem 2rem 5rem; text-align: center; background: var(--white);
+    }
+    .page-header .eyebrow { justify-content: center; display: block; }
+    .page-header .section-title { font-size: clamp(2.8rem, 6vw, 5rem); margin-bottom: 0; }
+
+    /* ─── PHOTO PLACEHOLDERS ─────────────────────────────────── */
+    .photo-ph {
+      width: 100%; height: 100%; background: var(--border-solid);
+      display: flex; align-items: center; justify-content: center;
+      min-height: 200px;
+    }
+    .photo-ph-label {
+      font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--blue); text-align: center; padding: 1rem;
+    }
+
+    /* ─── BTN ────────────────────────────────────────────────── */
+    .btn { display: inline-block; font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; padding: .9rem 2.2rem; cursor: pointer; transition: all .25s; }
+    .btn-fill { background: var(--blue); color: white; border: 1px solid var(--blue); }
+    .btn-fill:hover { background: var(--blue-dk); border-color: var(--blue-dk); }
+    .btn-outline { background: transparent; color: var(--blue); border: 1px solid var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: white; }
+    .btn-white { background: white; color: var(--text); border: 1px solid white; }
+    .btn-white:hover { background: transparent; color: white; border-color: white; }
+
+    /* ─── CONTACT FORM (shared) ──────────────────────────────── */
+    .contact-section {
+      padding: 7rem 2rem; background: var(--white);
+      border-top: 1px solid var(--border-solid);
+    }
+    .contact-inner-sm { max-width: 680px; margin: 0 auto; text-align: center; }
+    .contact-pre {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 1.55rem; color: var(--blue); margin-bottom: .6rem;
+    }
+    .contact-title-sm {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--text);
+      line-height: 1.1; margin-bottom: 1rem;
+    }
+    .contact-body-sm { color: var(--light); font-size: .92rem; max-width: 480px; margin: 0 auto 2.5rem; }
+    .cform { display: flex; flex-direction: column; gap: .9rem; text-align: left; }
+    .crow { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+    .cfield label {
+      display: block; font-size: .58rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--light); margin-bottom: .35rem;
+    }
+    .cfield input, .cfield select, .cfield textarea {
+      width: 100%; padding: .85rem 1rem;
+      border: 1px solid var(--border-solid); background: white;
+      font-family: 'Jost', sans-serif; font-size: .88rem; font-weight: 300; color: var(--text);
+      outline: none; transition: border-color .2s; -webkit-appearance: none;
+    }
+    .cfield input:focus, .cfield select:focus, .cfield textarea:focus { border-color: var(--blue); }
+    .cfield textarea { resize: vertical; min-height: 120px; }
+    .csub {
+      align-self: center; padding: .95rem 3.2rem;
+      background: var(--blue); color: white; border: none;
+      font-family: 'Jost', sans-serif; font-size: .64rem; letter-spacing: .2em; text-transform: uppercase;
+      cursor: pointer; transition: background .25s; margin-top: .4rem;
+    }
+    .csub:hover { background: var(--blue-dk); }
+    .contact-alt-sm { margin-top: 2rem; font-size: .76rem; color: var(--light); }
+    .contact-alt-sm a { color: var(--blue); }
+
+    /* ─── FOOTER ──────────────────────────────────────────────── */
+    #site-footer {
+      background: var(--white); border-top: 1px solid var(--border-solid);
+      padding: 0 0 3rem;
+    }
+    .footer-ig {
+      display: grid; grid-template-columns: repeat(6, 1fr);
+    }
+    .footer-ig-cell { aspect-ratio: 1; overflow: hidden; position: relative; }
+    .footer-ig-cell img { transition: transform .5s ease; }
+    .footer-ig-cell:hover img { transform: scale(1.06); }
+    .footer-ig-overlay {
+      position: absolute; inset: 0;
+      background: rgba(126,181,200,0); display: flex; align-items: center; justify-content: center;
+      transition: background .3s;
+    }
+    .footer-ig-cell:hover .footer-ig-overlay { background: rgba(126,181,200,.25); }
+    .footer-ig-label {
+      font-size: .58rem; letter-spacing: .16em; text-transform: uppercase;
+      color: white; opacity: 0; transition: opacity .3s;
+    }
+    .footer-ig-cell:hover .footer-ig-label { opacity: 1; }
+    .footer-main { padding: 3rem 3rem 0; text-align: center; }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem; font-weight: 700; color: var(--text); margin-bottom: .4rem;
+      cursor: pointer;
+    }
+    .footer-tag {
+      font-size: .6rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--light); margin-bottom: 1.6rem;
+    }
+    .footer-nav { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.6rem; }
+    .footer-nav a {
+      font-size: .62rem; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--light); transition: color .2s; cursor: pointer;
+    }
+    .footer-nav a:hover { color: var(--blue); }
+    .footer-social { display: flex; justify-content: center; gap: 1.4rem; margin-bottom: 1.6rem; }
+    .footer-social a {
+      font-size: .62rem; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--blue); transition: color .2s;
+    }
+    .footer-social a:hover { color: var(--blue-dk); }
+    .footer-copy { font-size: .62rem; color: #B0B0B0; }
+
+    /* ══════════════════════════════════════════════════════════
+       HOME PAGE
+    ══════════════════════════════════════════════════════════ */
+
+    /* Hero */
+    #home-hero {
+      position: relative; height: 100vh; min-height: 640px;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .home-hero-img {
+      position: absolute; inset: 0;
+      background: #1A2A33;
+    }
+    .home-hero-img::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(10,18,22,.18) 0%, rgba(10,18,22,.52) 100%);
+    }
+    .home-hero-content {
+      position: relative; z-index: 2; text-align: center; padding: 0 1.5rem;
+      max-width: 900px;
+    }
+    .home-hero-pre {
+      font-size: .62rem; letter-spacing: .32em; text-transform: uppercase;
+      color: rgba(255,255,255,.65); margin-bottom: 1.2rem;
+    }
+    .home-hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.8rem, 10vw, 8rem);
+      font-weight: 800; color: white; line-height: .92; letter-spacing: .01em; margin-bottom: .8rem;
+    }
+    .home-hero-sub {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: clamp(1.2rem, 2.8vw, 1.9rem); font-weight: 300;
+      color: rgba(255,255,255,.82); letter-spacing: .05em; margin-bottom: 2.8rem;
+    }
+    .home-hero-ctas { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%); width: 1px; height: 55px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,.4));
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:.4}50%{opacity:1} }
+
+    /* Featured work */
+    #home-work { background: var(--white); }
+    .work-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 400px 400px;
+    }
+    .work-cell { overflow: hidden; position: relative; }
+    .work-cell img { transition: transform .8s ease; }
+    .work-cell:hover img { transform: scale(1.04); }
+    .work-cell.tall { grid-row: span 2; }
+    .work-cta {
+      padding: 5rem 2rem; text-align: center; background: var(--white);
+    }
+
+    /* Services preview */
+    #home-services { padding: 7rem 2rem; background: var(--off); }
+    .hs-inner { max-width: 1100px; margin: 0 auto; }
+    .hs-header { text-align: center; margin-bottom: 4rem; }
+    .hs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+    .hs-card { position: relative; overflow: hidden; cursor: pointer; }
+    .hs-card-img { height: 440px; }
+    .hs-card-img img { transition: transform .7s ease; }
+    .hs-card:hover .hs-card-img img { transform: scale(1.06); }
+    .hs-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,18,22,.7) 0%, rgba(10,18,22,.05) 55%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 2rem 1.8rem; transition: background .3s;
+    }
+    .hs-card:hover .hs-card-overlay { background: linear-gradient(to top, rgba(10,18,22,.8) 0%, rgba(10,18,22,.1) 55%); }
+    .hs-card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem; font-weight: 700; color: white; line-height: 1.1; margin-bottom: .5rem;
+    }
+    .hs-card-link {
+      font-size: .6rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--blue); display: flex; align-items: center; gap: .5rem; transition: gap .2s;
+    }
+    .hs-card:hover .hs-card-link { gap: .9rem; }
+    /* Let's meet */
+    #home-meet {
+      position: relative; padding: 9rem 2rem; text-align: center; overflow: hidden;
+    }
+    .meet-bg {
+      position: absolute; inset: 0;
+      background: #1A2A33;
+    }
+    .meet-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(10,18,22,.52);
+    }
+    .meet-content { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+    .meet-pre {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 1.5rem; color: rgba(255,255,255,.8); margin-bottom: .8rem;
+    }
+    .meet-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem,5vw,4rem); font-weight: 800; color: white;
+      line-height: 1.05; margin-bottom: 1.2rem;
+    }
+    .meet-body { color: rgba(255,255,255,.72); font-size: .95rem; line-height: 1.9; margin-bottom: 2.5rem; }
+
+    /* ══════════════════════════════════════════════════════════
+       SERVICES PAGE
+    ══════════════════════════════════════════════════════════ */
+    .service-block {
+      display: grid; grid-template-columns: 1fr 1fr; min-height: 65vh;
+    }
+    .service-block:nth-child(even) .service-block-photo { order: 2; }
+    .service-block:nth-child(even) .service-block-text { order: 1; }
+    .service-block-photo { overflow: hidden; }
+    .service-block-photo img { transition: transform 1s ease; }
+    .service-block-photo:hover img { transform: scale(1.04); }
+    .service-block-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 6rem 5rem; background: var(--white);
+      border-bottom: 1px solid var(--border-solid);
+    }
+    .service-block-text .section-title { font-size: clamp(1.8rem,3.5vw,2.6rem); }
+    .service-desc { color: var(--body); font-size: .93rem; line-height: 1.9; margin-bottom: 1.6rem; }
+    .service-includes { margin-bottom: 2rem; }
+    .service-includes-label {
+      font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: .7rem;
+    }
+    .service-includes ul { list-style: none; }
+    .service-includes li {
+      font-size: .88rem; color: var(--body); padding: .3rem 0;
+      padding-left: 1.1rem; position: relative; line-height: 1.5;
+    }
+    .service-includes li::before {
+      content: ''; position: absolute; left: 0; top: .65rem;
+      width: 5px; height: 1px; background: var(--blue);
+    }
+    .service-price-link {
+      font-size: .63rem; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--blue); display: inline-flex; align-items: center; gap: .5rem;
+      transition: gap .2s; cursor: pointer; margin-top: .5rem;
+    }
+    .service-price-link:hover { gap: .9rem; }
+    .service-divider-photo { height: 50vh; max-height: 500px; overflow: hidden; }
+    .service-divider-photo img { transition: transform 1.2s ease; }
+    .service-divider-photo:hover img { transform: scale(1.03); }
+
+    /* ══════════════════════════════════════════════════════════
+       INVESTMENT PAGE
+    ══════════════════════════════════════════════════════════ */
+    .inv-nav {
+      position: sticky; top: 70px; z-index: 100; background: white;
+      border-bottom: 1px solid var(--border-solid);
+      display: flex; overflow-x: auto; padding: 0 2rem;
+    }
+    .inv-nav-item {
+      font-size: .6rem; letter-spacing: .16em; text-transform: uppercase;
+      padding: 1.1rem 1.4rem; color: var(--light); white-space: nowrap;
+      cursor: pointer; border-bottom: 2px solid transparent; transition: all .2s;
+    }
+    .inv-nav-item:hover, .inv-nav-item.active { color: var(--blue); border-bottom-color: var(--blue); }
+    .inv-section { padding: 6rem 2rem; border-bottom: 1px solid var(--border-solid); }
+    .inv-section:last-of-type { border-bottom: none; }
+    .inv-inner { max-width: 1000px; margin: 0 auto; }
+    .inv-section-header { margin-bottom: 3rem; }
+    .inv-section-header .section-title { font-size: clamp(1.8rem,3.5vw,2.8rem); margin-bottom: .6rem; }
+    .inv-section-desc { color: var(--body); font-size: .9rem; max-width: 580px; }
+    .inv-packages { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 1.5rem; }
+    .inv-pkg {
+      border: 1px solid var(--border-solid); padding: 2rem 1.8rem;
+      position: relative; transition: border-color .2s;
+    }
+    .inv-pkg:hover { border-color: var(--blue); }
+    .inv-pkg.featured { border-color: var(--blue); }
+    .inv-pkg-badge {
+      position: absolute; top: -1px; left: 1.8rem;
+      font-size: .55rem; letter-spacing: .14em; text-transform: uppercase;
+      background: var(--blue); color: white; padding: .3rem .7rem;
+    }
+    .inv-pkg-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; font-weight: 700; color: var(--text); margin-bottom: .3rem;
+    }
+    .inv-pkg-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 700; color: var(--blue);
+      margin-bottom: .3rem; line-height: 1;
+    }
+    .inv-pkg-note { font-size: .78rem; color: var(--light); margin-bottom: 1.2rem; }
+    .inv-pkg ul { list-style: none; }
+    .inv-pkg li {
+      font-size: .84rem; color: var(--body); padding: .35rem 0;
+      padding-left: 1.1rem; position: relative;
+      border-bottom: 1px solid var(--border-solid); line-height: 1.45;
+    }
+    .inv-pkg li:last-child { border-bottom: none; }
+    .inv-pkg li::before {
+      content: ''; position: absolute; left: 0; top: .65rem;
+      width: 5px; height: 1px; background: var(--blue);
+    }
+    .inv-faq { max-width: 700px; margin: 0 auto; padding: 5rem 2rem; }
+    .inv-faq-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 700; color: var(--text);
+      text-align: center; margin-bottom: 3rem;
+    }
+    .faq-item { border-bottom: 1px solid var(--border-solid); }
+    .faq-q {
+      width: 100%; background: none; border: none; cursor: pointer; padding: 1.4rem 0;
+      font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700;
+      color: var(--text); text-align: left; display: flex; justify-content: space-between;
+      align-items: center; gap: 1rem;
+    }
+    .faq-q:hover { color: var(--blue); }
+    .faq-arrow { font-size: .85rem; color: var(--blue); transition: transform .3s; flex-shrink: 0; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-body { display: none; padding-bottom: 1.4rem; }
+    .faq-item.open .faq-body { display: block; }
+    .faq-a { font-size: .9rem; color: var(--body); line-height: 1.8; margin: 0; }
+
+    /* ══════════════════════════════════════════════════════════
+       ABOUT PAGE
+    ══════════════════════════════════════════════════════════ */
+    .about-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; }
+    .about-split-photo { overflow: hidden; }
+    .about-split-photo img { transition: transform 1s ease; }
+    .about-split-photo:hover img { transform: scale(1.03); }
+    .about-split-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 7rem 5.5rem; background: var(--white);
+    }
+    .about-body-p { color: var(--body); font-size: .93rem; line-height: 1.95; }
+    .about-body-p + .about-body-p { margin-top: 1.1rem; }
+    .about-sig {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 1.85rem; color: var(--blue); margin-top: 2.2rem; letter-spacing: .03em;
+    }
+    .about-loc {
+      font-size: .63rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--light); margin-top: .4rem;
+    }
+    /* ══════════════════════════════════════════════════════════
+       GALLERIES PAGE
+    ══════════════════════════════════════════════════════════ */
+    .gallery-filter {
+      display: flex; justify-content: center; gap: 0;
+      padding: 2rem; flex-wrap: wrap;
+      border-bottom: 1px solid var(--border-solid);
+    }
+    .gfilter-btn {
+      font-size: .6rem; letter-spacing: .18em; text-transform: uppercase;
+      padding: .7rem 1.4rem; color: var(--light); cursor: pointer;
+      border-bottom: 2px solid transparent; transition: all .2s; background: none; border: none;
+      border-bottom: 2px solid transparent; font-family: 'Jost', sans-serif;
+    }
+    .gfilter-btn:hover, .gfilter-btn.active { color: var(--blue); border-bottom-color: var(--blue); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .gallery-cell { aspect-ratio: 1; overflow: hidden; position: relative; cursor: pointer; }
+    .gallery-cell img { transition: transform .6s ease; }
+    .gallery-cell:hover img { transform: scale(1.05); }
+    .gallery-cell-overlay {
+      position: absolute; inset: 0;
+      background: rgba(126,181,200,0); transition: background .3s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .gallery-cell:hover .gallery-cell-overlay { background: rgba(126,181,200,.2); }
+
+    /* ══════════════════════════════════════════════════════════
+       CONTACT PAGE
+    ══════════════════════════════════════════════════════════ */
+    #page-contact .contact-full {
+      max-width: 720px; margin: 0 auto; padding: 3rem 2rem 6rem;
+    }
+    .contact-info-row {
+      display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+      margin-bottom: 4rem; padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border-solid);
+    }
+    .contact-info-item { text-align: center; }
+    .contact-info-label {
+      font-size: .58rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: .4rem;
+    }
+    .contact-info-val { font-size: .9rem; color: var(--body); }
+    .contact-info-val a { color: var(--blue); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      #site-nav { padding: 1.2rem 1.5rem; }
+      #site-nav.scrolled, #site-nav.solid { padding: .9rem 1.5rem; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-ham { display: flex; }
+      .home-hero-name { font-size: clamp(3rem,14vw,5.5rem); }
+      .work-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 280px 280px; }
+      .work-cell.tall { grid-row: span 1; }
+      .hs-grid { grid-template-columns: 1fr; }
+      .hs-card-img { height: 300px; }
+      .hs-more { grid-template-columns: 1fr 1fr; }
+      .service-block { grid-template-columns: 1fr; }
+      .service-block:nth-child(even) .service-block-photo { order: 0; }
+      .service-block:nth-child(even) .service-block-text { order: 0; }
+      .service-block-text { padding: 3.5rem 1.5rem; }
+      .service-block-photo { min-height: 65vw; }
+      .about-split { grid-template-columns: 1fr; }
+      .about-split-photo { min-height: 65vw; }
+      .about-split-text { padding: 4rem 1.5rem; }
+      .values-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-ig { grid-template-columns: repeat(3,1fr); }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .crow { grid-template-columns: 1fr; }
+      .inv-packages { grid-template-columns: 1fr; }
+      .home-process-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav id="site-nav">
+  <span class="nav-logo" onclick="goPage('home')">Photos by Alexandra Lynn</span>
+  <ul class="nav-links">
+    <li><a onclick="goPage('home')" data-page="home">Home</a></li>
+    <li><a onclick="goPage('services')" data-page="services">Services</a></li>
+    <li><a onclick="goPage('galleries')" data-page="galleries">Galleries</a></li>
+    <li><a onclick="goPage('about')" data-page="about">About</a></li>
+    <li><a onclick="goPage('investment')" data-page="investment">Investment</a></li>
+  </ul>
+  <span class="nav-cta btn" onclick="goPage('contact')">Get in Touch</span>
+  <button class="nav-ham" id="nav-ham" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile nav overlay -->
+<div class="nav-mobile" id="nav-mobile">
+  <a onclick="goPage('home');toggleMobileNav()">Home</a>
+  <a onclick="goPage('services');toggleMobileNav()">Services</a>
+  <a onclick="goPage('galleries');toggleMobileNav()">Galleries</a>
+  <a onclick="goPage('about');toggleMobileNav()">About</a>
+  <a onclick="goPage('investment');toggleMobileNav()">Investment</a>
+  <span class="nav-mob-cta" onclick="goPage('contact');toggleMobileNav()">Get in Touch</span>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     HOME PAGE
+══════════════════════════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- Hero -->
+  <section id="home-hero">
+    <div class="home-hero-img"></div>
+    <div class="home-hero-content">
+      <p class="home-hero-pre">Tri-Cities, WA · Available to travel anywhere</p>
+      <h1 class="home-hero-name">Alexandra<br>Lynn</h1>
+      <p class="home-hero-sub">Wedding & Portrait Photographer</p>
+      <div class="home-hero-ctas">
+        <span class="btn btn-fill" onclick="goPage('contact')">Book Your Session</span>
+        <span class="btn btn-white" onclick="goPage('galleries')">View My Work</span>
+      </div>
+    </div>
+    <div class="hero-scroll"></div>
+  </section>
+
+  <!-- Intro -->
+  <section id="home-intro" style="padding:6rem 2rem;text-align:center;background:var(--white);">
+    <div style="max-width:640px;margin:0 auto;">
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.3rem,2.5vw,1.8rem);color:var(--blue);margin-bottom:1.2rem;">Hi, I'm Alexandra.</p>
+      <p style="font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;color:var(--text);line-height:1.2;margin-bottom:1.5rem;">I photograph the moments that matter most — <em>the ones you never want to forget.</em></p>
+      <p style="font-size:.95rem;color:var(--body);line-height:1.9;max-width:520px;margin:0 auto 2rem;">Based in Tri-Cities, WA and available to travel anywhere. Whether it's your wedding day, a family session, or a portrait — I'm here to make sure you have photos you'll love for the rest of your life.</p>
+      <span class="btn btn-outline" onclick="goPage('about')">More about me</span>
+      <p style="margin-top:2rem;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);">&#10022; Now booking Summer &amp; Fall 2026</p>
+    </div>
+  </section>
+
+  <!-- Featured work -->
+  <section id="home-work">
+    <div class="work-grid">
+      <div class="work-cell tall">
+        <div class="photo-ph"><span class="photo-ph-label">Wedding photography</span></div>
+      </div>
+      <div class="work-cell">
+        <div class="photo-ph"><span class="photo-ph-label">Portrait</span></div>
+      </div>
+      <div class="work-cell">
+        <div class="photo-ph"><span class="photo-ph-label">Couple</span></div>
+      </div>
+      <div class="work-cell">
+        <div class="photo-ph"><span class="photo-ph-label">Family</span></div>
+      </div>
+      <div class="work-cell">
+        <div class="photo-ph"><span class="photo-ph-label">Wedding detail</span></div>
+      </div>
+    </div>
+    <div class="work-cta">
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--blue);margin-bottom:.8rem;">see the full collection</p>
+      <span class="btn btn-outline" onclick="goPage('galleries')">Browse the Galleries</span>
+    </div>
+  </section>
+
+  <!-- Services preview -->
+  <section id="home-services">
+    <div class="hs-inner">
+      <div class="hs-header">
+        <span class="eyebrow">what I offer</span>
+        <h2 class="section-title">Photography for every<br><em>chapter of your story</em></h2>
+      </div>
+      <div class="hs-grid">
+        <div class="hs-card" onclick="goPage('services','weddings')">
+          <div class="hs-card-img">
+            <div class="photo-ph"><span class="photo-ph-label">Weddings</span></div>
+          </div>
+          <div class="hs-card-overlay">
+            <div class="hs-card-name">Weddings &amp;<br>Engagements</div>
+            <span class="hs-card-link">Learn more →</span>
+          </div>
+        </div>
+        <div class="hs-card" onclick="goPage('services','portraits')">
+          <div class="hs-card-img">
+            <div class="photo-ph"><span class="photo-ph-label">Portraits</span></div>
+          </div>
+          <div class="hs-card-overlay">
+            <div class="hs-card-name">Seniors, Couples<br>&amp; Portraits</div>
+            <span class="hs-card-link">Learn more →</span>
+          </div>
+        </div>
+        <div class="hs-card" onclick="goPage('services','family')">
+          <div class="hs-card-img">
+            <div class="photo-ph"><span class="photo-ph-label">Family</span></div>
+          </div>
+          <div class="hs-card-overlay">
+            <div class="hs-card-name">Family &amp;<br>Maternity</div>
+            <span class="hs-card-link">Learn more →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section style="padding:7rem 2rem;background:var(--off);border-top:1px solid var(--border-solid);">
+    <div style="max-width:860px;margin:0 auto;text-align:center;">
+      <span class="eyebrow">the process</span>
+      <h2 class="section-title">Simple from start<br><em>to finish</em></h2>
+      <div class="home-process-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem;margin-top:3.5rem;">
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--blue);line-height:1;margin-bottom:.7rem;">01</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.5rem;">Reach out</div>
+          <p style="font-size:.84rem;color:var(--body);line-height:1.75;">Fill out the contact form and tell me what you have in mind.</p>
+        </div>
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--blue);line-height:1;margin-bottom:.7rem;">02</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.5rem;">We connect</div>
+          <p style="font-size:.84rem;color:var(--body);line-height:1.75;">I'll follow up within 48 hours to chat details and make sure we're a great fit.</p>
+        </div>
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--blue);line-height:1;margin-bottom:.7rem;">03</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.5rem;">Your session</div>
+          <p style="font-size:.84rem;color:var(--body);line-height:1.75;">We shoot — relaxed, fun, and entirely focused on you.</p>
+        </div>
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--blue);line-height:1;margin-bottom:.7rem;">04</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.5rem;">Your gallery</div>
+          <p style="font-size:.84rem;color:var(--body);line-height:1.75;">Your edited photos arrive in a private gallery, ready to download and share.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Let's meet CTA -->
+  <section id="home-meet">
+    <div class="meet-bg"></div>
+    <div class="meet-content">
+      <p class="meet-pre">let's connect</p>
+      <h2 class="meet-title">Ready to tell<br>your story?</h2>
+      <p class="meet-body">Whether you're planning a wedding, a portrait session, or a family shoot — I'd love to hear about your vision. No pressure, just a conversation about what matters most to you.</p>
+      <span class="btn btn-white" onclick="goPage('contact')">Let's Chat</span>
+    </div>
+  </section>
+
+</div><!-- /page-home -->
+
+<!-- ══════════════════════════════════════════════════════════════
+     SERVICES PAGE
+══════════════════════════════════════════════════════════════ -->
+<div id="page-services" class="page">
+
+  <div class="page-header">
+    <span class="eyebrow">what I offer</span>
+    <h1 class="section-title">Services</h1>
+  </div>
+
+  <!-- Weddings & Engagements -->
+  <div id="svc-weddings" class="service-block">
+    <div class="service-block-photo">
+      <div class="photo-ph"><span class="photo-ph-label">Wedding photography</span></div>
+    </div>
+    <div class="service-block-text">
+      <span class="eyebrow">01</span>
+      <h2 class="section-title">Weddings &amp;<br><em>Engagements</em></h2>
+      <p class="service-desc">Your wedding day is one of the most important days of your life — and I treat it that way. I document every emotion, every laugh, every stolen glance, so you can relive it forever. Engagement sessions are also perfect for getting comfortable in front of the camera before the big day.</p>
+      <div class="service-includes">
+        <p class="service-includes-label">What's included</p>
+        <ul>
+          <li>Full coverage from getting ready to reception</li>
+          <li>Fully edited high-resolution images in private gallery</li>
+          <li>Online gallery with print ordering available</li>
+          <li>Travel within 50 miles of Tri-Cities included</li>
+          <li>Engagement session included (Classic &amp; Full Day packages)</li>
+        </ul>
+      </div>
+      <span class="service-price-link" onclick="goInvestment('weddings')">View wedding pricing →</span>
+    </div>
+  </div>
+
+  <!-- Seniors & Portraits -->
+  <div id="svc-portraits" class="service-block">
+    <div class="service-block-photo">
+      <div class="photo-ph"><span class="photo-ph-label">Senior portrait</span></div>
+    </div>
+    <div class="service-block-text">
+      <span class="eyebrow">02</span>
+      <h2 class="section-title"><em>Portraits</em></h2>
+      <p class="service-desc">Senior portraits should feel like you — not like a template. We'll choose locations and outfits that reflect your personality, and I'll guide you through every pose so you feel natural and confident. The result? Photos you'll actually want to display.</p>
+      <div class="service-includes">
+        <p class="service-includes-label">What's included</p>
+        <ul>
+          <li>Pre-session style consultation</li>
+          <li>Multiple outfit changes and locations</li>
+          <li>Fully edited high-resolution images</li>
+          <li>Private online gallery with download access</li>
+          <li>Print-ready files included</li>
+        </ul>
+      </div>
+      <span class="service-price-link" onclick="goInvestment('seniors')">View portrait pricing →</span>
+    </div>
+  </div>
+
+  <!-- Family & Maternity -->
+  <div id="svc-family" class="service-block">
+    <div class="service-block-photo">
+      <div class="photo-ph"><span class="photo-ph-label">Family session</span></div>
+    </div>
+    <div class="service-block-text">
+      <span class="eyebrow">03</span>
+      <h2 class="section-title">Family &amp;<br><em>Maternity</em></h2>
+      <p class="service-desc">Kids don't pose — and that's exactly what makes family sessions so beautiful. I focus on capturing your family as you actually are: real, messy, loving, and hilarious. Maternity sessions celebrate this incredible season of life with images that are timeless, glowing, and entirely yours.</p>
+      <div class="service-includes">
+        <p class="service-includes-label">What's included</p>
+        <ul>
+          <li>Relaxed, candid-forward approach</li>
+          <li>Location scouting assistance</li>
+          <li>Fully edited images delivered within 4 weeks</li>
+          <li>Private gallery with unlimited downloads</li>
+          <li>Maternity: gown options available on request</li>
+        </ul>
+      </div>
+      <span class="service-price-link" onclick="goInvestment('family')">View family pricing →</span>
+    </div>
+  </div>
+
+  <!-- Contact form -->
+  <div class="contact-section">
+    <div class="contact-inner-sm">
+      <p class="contact-pre">ready to start?</p>
+      <h2 class="contact-title-sm">Let's make something beautiful together</h2>
+      <p class="contact-body-sm">Tell me about your session and I'll be in touch within 24–48 hours.</p>
+      <form class="cform" onsubmit="submitForm(event,this)">
+        <div class="crow">
+          <div class="cfield"><label>First Name</label><input type="text" required/></div>
+          <div class="cfield"><label>Last Name</label><input type="text" required/></div>
+        </div>
+        <div class="cfield"><label>Email Address</label><input type="email" required/></div>
+        <div class="cfield">
+          <label>Service Interested In</label>
+          <select>
+            <option value="">Select...</option>
+            <option>Wedding / Engagement</option>
+            <option>Portraits</option>
+            <option>Family Session</option>
+            <option>Maternity</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="cfield"><label>Approximate Date or Timeframe</label><input type="text" placeholder="e.g. September 2026, sometime this fall…"/></div>
+        <div class="cfield"><label>Tell me about your vision</label><textarea placeholder="Share anything that would help me understand what you're looking for…"></textarea></div>
+        <button type="submit" class="csub">Send Inquiry</button>
+      </form>
+      <p class="contact-alt-sm">Or email directly: <a href="mailto:photosbyalexandralynn@gmail.com">photosbyalexandralynn@gmail.com</a></p>
+    </div>
+  </div>
+
+</div><!-- /page-services -->
+
+<!-- ══════════════════════════════════════════════════════════════
+     INVESTMENT PAGE
+══════════════════════════════════════════════════════════════ -->
+<div id="page-investment" class="page">
+
+  <div class="page-header">
+    <span class="eyebrow">transparent pricing</span>
+    <h1 class="section-title">Investment</h1>
+  </div>
+
+  <nav class="inv-nav" id="inv-nav">
+    <div class="inv-nav-item active" data-section="inv-weddings" onclick="scrollInv('inv-weddings',this)">Weddings</div>
+    <div class="inv-nav-item" data-section="inv-seniors" onclick="scrollInv('inv-seniors',this)">Portraits</div>
+    <div class="inv-nav-item" data-section="inv-family" onclick="scrollInv('inv-family',this)">Family &amp; Maternity</div>
+  </nav>
+
+  <!-- Weddings -->
+  <div id="inv-weddings" class="inv-section">
+    <div class="inv-inner">
+      <div class="inv-section-header">
+        <span class="eyebrow">01</span>
+        <h2 class="section-title">Weddings &amp; <em>Engagements</em></h2>
+        <p class="inv-section-desc">All wedding packages include a complimentary pre-wedding consultation, a detailed shot list, and full ceremony + reception coverage. Engagement sessions are included in Classic and Full Day packages.</p>
+      </div>
+      <div class="inv-packages">
+        <div class="inv-pkg">
+          <div class="inv-pkg-name">Elopement</div>
+          <div class="inv-pkg-price">$1,200</div>
+          <div class="inv-pkg-note">Up to 4 hours</div>
+          <ul>
+            <li>Intimate ceremony coverage</li>
+            <li>Fully edited images</li>
+            <li>Private online gallery</li>
+            <li>Travel within 50 mi included</li>
+            <li>Print-ready files</li>
+          </ul>
+        </div>
+        <div class="inv-pkg featured">
+          <div class="inv-pkg-badge">Most popular</div>
+          <div class="inv-pkg-name">Classic Wedding</div>
+          <div class="inv-pkg-price">$1,800</div>
+          <div class="inv-pkg-note">Up to 8 hours</div>
+          <ul>
+            <li>Engagement session included</li>
+            <li>Getting ready through first dances</li>
+            <li>Fully edited images</li>
+            <li>Private gallery with downloads</li>
+            <li>Print-ready files</li>
+          </ul>
+        </div>
+        <div class="inv-pkg">
+          <div class="inv-pkg-name">Full Day</div>
+          <div class="inv-pkg-price">$2,400</div>
+          <div class="inv-pkg-note">Up to 12 hours</div>
+          <ul>
+            <li>Engagement session included</li>
+            <li>Full day — morning prep to final send-off</li>
+            <li>Fully edited images</li>
+            <li>Private gallery with downloads</li>
+            <li>Print-ready files</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top:2rem;">
+        <p style="font-size:.82rem;color:var(--light);">Custom quotes available for destination weddings. Travel within 50 miles always included.</p>
+      </div>
+      <div style="margin-top:1.5rem;">
+        <span class="btn btn-outline" onclick="goPage('contact')">Inquire About Your Date</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seniors & Portraits -->
+  <div id="inv-seniors" class="inv-section">
+    <div class="inv-inner">
+      <div class="inv-section-header">
+        <span class="eyebrow">02</span>
+        <h2 class="section-title"><em>Portraits</em></h2>
+        <p class="inv-section-desc">Seniors, couples, individuals — every portrait session is tailored to you. We'll talk through style, location, and what you want to feel when you look at your photos.</p>
+      </div>
+      <div class="inv-packages">
+        <div class="inv-pkg">
+          <div class="inv-pkg-name">Mini Session</div>
+          <div class="inv-pkg-price">$125</div>
+          <div class="inv-pkg-note">30 minutes · 1 location</div>
+          <ul>
+            <li>Fully edited images</li>
+            <li>1 outfit</li>
+            <li>Private gallery</li>
+          </ul>
+        </div>
+        <div class="inv-pkg featured">
+          <div class="inv-pkg-badge">Most popular</div>
+          <div class="inv-pkg-name">Standard Session</div>
+          <div class="inv-pkg-price">$225</div>
+          <div class="inv-pkg-note">1 hour · 1–2 locations</div>
+          <ul>
+            <li>Fully edited images</li>
+            <li>2 outfit changes</li>
+            <li>Private gallery with downloads</li>
+            <li>Print-ready files</li>
+          </ul>
+        </div>
+        <div class="inv-pkg">
+          <div class="inv-pkg-name">Extended Session</div>
+          <div class="inv-pkg-price">$325</div>
+          <div class="inv-pkg-note">90 min – 2 hours · up to 3 locations</div>
+          <ul>
+            <li>Fully edited images</li>
+            <li>Multiple outfit changes</li>
+            <li>Private gallery with downloads</li>
+            <li>Print-ready files</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top:1.5rem;">
+        <span class="btn btn-outline" onclick="goPage('contact')">Book a Portrait Session</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Family & Maternity -->
+  <div id="inv-family" class="inv-section">
+    <div class="inv-inner">
+      <div class="inv-section-header">
+        <span class="eyebrow">03</span>
+        <h2 class="section-title">Family &amp; <em>Maternity</em></h2>
+        <p class="inv-section-desc">Family sessions are relaxed and fun — I come prepared to work with kids of all ages. Maternity sessions are available as standalone bookings or alongside a family session.</p>
+      </div>
+      <div class="inv-packages">
+        <div class="inv-pkg">
+          <div class="inv-pkg-name">Mini Session</div>
+          <div class="inv-pkg-price">$125</div>
+          <div class="inv-pkg-note">30 minutes</div>
+          <ul>
+            <li>Fully edited images</li>
+            <li>Up to 5 family members</li>
+            <li>Private gallery</li>
+          </ul>
+        </div>
+        <div class="inv-pkg featured">
+          <div class="inv-pkg-badge">Most popular</div>
+          <div class="inv-pkg-name">Standard Session</div>
+          <div class="inv-pkg-price">$225</div>
+          <div class="inv-pkg-note">1 hour</div>
+          <ul>
+            <li>Fully edited images</li>
+            <li>Mix of candid and posed</li>
+            <li>Private gallery with downloads</li>
+            <li>Up to 8 family members</li>
+          </ul>
+        </div>
+        <div class="inv-pkg">
+          <div class="inv-pkg-name">Extended Session</div>
+          <div class="inv-pkg-price">$325</div>
+          <div class="inv-pkg-note">90 minutes</div>
+          <ul>
+            <li>Fully edited images</li>
+            <li>Multiple locations or setups</li>
+            <li>Perfect for larger families</li>
+            <li>Private gallery with downloads</li>
+          </ul>
+        </div>
+        <div class="inv-pkg">
+          <div class="inv-pkg-name">Maternity Session</div>
+          <div class="inv-pkg-price">$225</div>
+          <div class="inv-pkg-note">1 hour · solo or with partner/family</div>
+          <ul>
+            <li>Fully edited images</li>
+            <li>Gown options available on request</li>
+            <li>Outdoor or curated indoor settings</li>
+            <li>Private gallery with downloads</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top:1.5rem;">
+        <span class="btn btn-outline" onclick="goPage('contact')">Book a Family Session</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="inv-faq">
+    <h3 class="inv-faq-title">FAQ</h3>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How do I book? <span class="faq-arrow">&#8964;</span></button>
+      <div class="faq-body"><p class="faq-a">Fill out the contact form or send me an email. Once we align on details, I send a contract and invoice for a 25% retainer to hold your date. Your date isn't reserved until both are signed and received.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What's your payment policy? <span class="faq-arrow">&#8964;</span></button>
+      <div class="faq-body"><p class="faq-a">A 25% retainer is due at booking. The remaining balance is due 2 weeks before your session or event date. I accept credit/debit cards and bank transfer.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">When will I receive my photos? <span class="faq-arrow">&#8964;</span></button>
+      <div class="faq-body"><p class="faq-a">Portrait, family, and maternity sessions: approximately 4 weeks. Weddings: approximately 8 weeks. Rush delivery may be available — just ask when you inquire.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you travel outside Tri-Cities? <span class="faq-arrow">&#8964;</span></button>
+      <div class="faq-body"><p class="faq-a">Yes — I'm available to travel anywhere. Travel within 50 miles of Tri-Cities is always included. Beyond that, travel costs are added to the package at cost (mileage, lodging if required, flights for destination sessions).</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What if I need to reschedule? <span class="faq-arrow">&#8964;</span></button>
+      <div class="faq-body"><p class="faq-a">Life happens. Rescheduling requests made more than 2 weeks before your session date are accommodated at no charge (subject to availability). Please refer to your contract for full details.</p></div>
+    </div>
+  </div>
+
+</div><!-- /page-investment -->
+
+<!-- ══════════════════════════════════════════════════════════════
+     GALLERIES PAGE
+══════════════════════════════════════════════════════════════ -->
+<div id="page-galleries" class="page">
+
+  <div class="page-header">
+    <span class="eyebrow">the work</span>
+    <h1 class="section-title">Galleries</h1>
+  </div>
+
+  <div class="gallery-filter">
+    <button class="gfilter-btn active" onclick="filterGallery('all',this)">All</button>
+    <button class="gfilter-btn" onclick="filterGallery('wedding',this)">Weddings</button>
+    <button class="gfilter-btn" onclick="filterGallery('portrait',this)">Portraits</button>
+    <button class="gfilter-btn" onclick="filterGallery('family',this)">Family &amp; Maternity</button>
+  </div>
+
+  <div class="gallery-grid" id="gallery-grid">
+    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="portrait"><div class="photo-ph"><span class="photo-ph-label">Portrait</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="family"><div class="photo-ph"><span class="photo-ph-label">Family</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="portrait"><div class="photo-ph"><span class="photo-ph-label">Portrait</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="portrait"><div class="photo-ph"><span class="photo-ph-label">Portrait</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="family"><div class="photo-ph"><span class="photo-ph-label">Family</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="family"><div class="photo-ph"><span class="photo-ph-label">Family</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="portrait"><div class="photo-ph"><span class="photo-ph-label">Portrait</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="portrait"><div class="photo-ph"><span class="photo-ph-label">Portrait</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="family"><div class="photo-ph"><span class="photo-ph-label">Family</span></div><div class="gallery-cell-overlay"></div></div>
+  </div>
+
+  <!-- Contact form -->
+  <div class="contact-section">
+    <div class="contact-inner-sm">
+      <p class="contact-pre">love what you see?</p>
+      <h2 class="contact-title-sm">Let's create your gallery</h2>
+      <p class="contact-body-sm">Tell me about your session and I'll be in touch within 24–48 hours.</p>
+      <form class="cform" onsubmit="submitForm(event,this)">
+        <div class="crow">
+          <div class="cfield"><label>First Name</label><input type="text" required/></div>
+          <div class="cfield"><label>Last Name</label><input type="text" required/></div>
+        </div>
+        <div class="cfield"><label>Email Address</label><input type="email" required/></div>
+        <div class="cfield">
+          <label>What are you looking for?</label>
+          <select>
+            <option value="">Select...</option>
+            <option>Wedding / Engagement</option>
+            <option>Portraits</option>
+            <option>Family Session</option>
+            <option>Maternity</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="cfield"><label>Tell me about your vision</label><textarea placeholder="Share anything that would help me understand what you're looking for…"></textarea></div>
+        <button type="submit" class="csub">Send Inquiry</button>
+      </form>
+    </div>
+  </div>
+
+</div><!-- /page-galleries -->
+
+<!-- ══════════════════════════════════════════════════════════════
+     ABOUT PAGE
+══════════════════════════════════════════════════════════════ -->
+<div id="page-about" class="page">
+
+  <div class="page-header" style="padding-bottom:3rem;">
+    <span class="eyebrow">behind the camera</span>
+    <h1 class="section-title">About</h1>
+  </div>
+
+  <div class="about-split">
+    <div class="about-split-photo">
+      <div class="photo-ph"><span class="photo-ph-label">Alexandra Lynn, photographer</span></div>
+    </div>
+    <div class="about-split-text">
+      <span class="eyebrow">Hey, I'm Alexandra.</span>
+      <h2 class="section-title" style="font-size:clamp(2rem,3.5vw,2.8rem);">Photographer. Storyteller.<br><em>Eastern Washington local.</em></h2>
+      <p class="about-body-p">I'm a photographer based in Tri-Cities, WA — and I genuinely love what I do. I'm drawn to the real moments: the nervous laugh before a first look, the way a family collapses into each other during a golden-hour session, the confidence someone feels when they see themselves in a photograph that actually looks like them.</p>
+      <p class="about-body-p">My style is warm, romantic, and unposed. I don't believe in stiff poses or manufactured smiles — I believe in chasing good light, building real connection, and letting the moment lead.</p>
+      <p class="about-body-p">I'm based in Kennewick and serve all of Tri-Cities — Kennewick, Richland, and Pasco — and I'm available to travel anywhere. The Columbia River Gorge, the Olympic Peninsula, a destination wedding in Italy — I'm always up for an adventure.</p>
+      <p class="about-sig">Alexandra Lynn</p>
+      <p class="about-loc">Tri-Cities, WA · Available to travel anywhere</p>
+    </div>
+  </div>
+
+  <!-- Contact form -->
+  <div class="contact-section">
+    <div class="contact-inner-sm">
+      <p class="contact-pre">let's meet</p>
+      <h2 class="contact-title-sm">I'd love to hear about your vision</h2>
+      <p class="contact-body-sm">No pressure — just a conversation. Tell me a little about what you're looking for and I'll be back in touch within 24–48 hours.</p>
+      <form class="cform" onsubmit="submitForm(event,this)">
+        <div class="crow">
+          <div class="cfield"><label>First Name</label><input type="text" required/></div>
+          <div class="cfield"><label>Last Name</label><input type="text" required/></div>
+        </div>
+        <div class="cfield"><label>Email Address</label><input type="email" required/></div>
+        <div class="cfield">
+          <label>What are you looking for?</label>
+          <select>
+            <option value="">Select...</option>
+            <option>Wedding / Engagement</option>
+            <option>Portraits</option>
+            <option>Family Session</option>
+            <option>Maternity</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="cfield"><label>Tell me about your vision</label><textarea placeholder="Share anything that would help me understand what you're looking for…"></textarea></div>
+        <button type="submit" class="csub">Send Message</button>
+      </form>
+      <p class="contact-alt-sm">Or reach out directly: <a href="mailto:photosbyalexandralynn@gmail.com">photosbyalexandralynn@gmail.com</a></p>
+    </div>
+  </div>
+
+</div><!-- /page-about -->
+
+<!-- ══════════════════════════════════════════════════════════════
+     CONTACT PAGE
+══════════════════════════════════════════════════════════════ -->
+<div id="page-contact" class="page">
+
+  <div class="page-header">
+    <span class="eyebrow">let's connect</span>
+    <h1 class="section-title">Get in Touch</h1>
+  </div>
+
+  <div class="contact-full" style="max-width:720px;margin:0 auto;padding:2rem 2rem 6rem;">
+    <div class="contact-info-row">
+      <div class="contact-info-item">
+        <div class="contact-info-label">Email</div>
+        <div class="contact-info-val"><a href="mailto:photosbyalexandralynn@gmail.com">photosbyalexandralynn@gmail.com</a></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-label">Instagram</div>
+        <div class="contact-info-val"><a href="https://instagram.com/photosbyalexandralynn" target="_blank">@photosbyalexandralynn</a></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-label">Location</div>
+        <div class="contact-info-val">Tri-Cities, WA · Available anywhere</div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-label">Response time</div>
+        <div class="contact-info-val">Within 24–48 hours</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-bottom:2.5rem;">
+      <p class="contact-pre" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.55rem;color:var(--blue);margin-bottom:.5rem;">I'd love to hear from you</p>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--text);line-height:1.1;margin-bottom:.8rem;">Tell me about your vision</h2>
+      <p style="color:var(--light);font-size:.9rem;">No pressure — I love chatting about what you're dreaming of before anything is committed.</p>
+    </div>
+    <form class="cform" onsubmit="submitForm(event,this)">
+      <div class="crow">
+        <div class="cfield"><label>First Name</label><input type="text" required/></div>
+        <div class="cfield"><label>Last Name</label><input type="text" required/></div>
+      </div>
+      <div class="cfield"><label>Email Address</label><input type="email" required/></div>
+      <div class="cfield"><label>Phone (optional)</label><input type="tel"/></div>
+      <div class="cfield">
+        <label>What are you looking for?</label>
+        <select>
+          <option value="">Select a service...</option>
+          <option>Wedding / Engagement</option>
+          <option>Portraits</option>
+          <option>Family Session</option>
+          <option>Maternity</option>
+          <option>Not sure yet — let's talk</option>
+        </select>
+      </div>
+      <div class="cfield"><label>Approximate Date or Timeframe</label><input type="text" placeholder="e.g. September 2026, sometime this fall, ASAP…"/></div>
+      <div class="cfield"><label>Tell me about your vision</label><textarea placeholder="Share anything — the vibe you're going for, your venue, your family dynamic, what matters most to you. The more I know, the better I can help."></textarea></div>
+      <button type="submit" class="csub">Send My Inquiry</button>
+    </form>
+  </div>
+
+</div><!-- /page-contact -->
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer id="site-footer">
+  <!-- Instagram grid preview -->
+  <div class="footer-ig">
+    <div class="footer-ig-cell">
+      <div class="photo-ph"><span class="photo-ph-label">Instagram</span></div>
+      <div class="footer-ig-overlay"><span class="footer-ig-label">@photosbyalexandralynn</span></div>
+    </div>
+    <div class="footer-ig-cell">
+      <div class="photo-ph"><span class="photo-ph-label">Instagram</span></div>
+      <div class="footer-ig-overlay"><span class="footer-ig-label">@photosbyalexandralynn</span></div>
+    </div>
+    <div class="footer-ig-cell">
+      <div class="photo-ph"><span class="photo-ph-label">Instagram</span></div>
+      <div class="footer-ig-overlay"><span class="footer-ig-label">@photosbyalexandralynn</span></div>
+    </div>
+    <div class="footer-ig-cell">
+      <div class="photo-ph"><span class="photo-ph-label">Instagram</span></div>
+      <div class="footer-ig-overlay"><span class="footer-ig-label">@photosbyalexandralynn</span></div>
+    </div>
+    <div class="footer-ig-cell">
+      <div class="photo-ph"><span class="photo-ph-label">Instagram</span></div>
+      <div class="footer-ig-overlay"><span class="footer-ig-label">@photosbyalexandralynn</span></div>
+    </div>
+    <div class="footer-ig-cell">
+      <div class="photo-ph"><span class="photo-ph-label">Instagram</span></div>
+      <div class="footer-ig-overlay"><span class="footer-ig-label">@photosbyalexandralynn</span></div>
+    </div>
+  </div>
+
+  <div class="footer-main">
+    <div class="footer-logo" onclick="goPage('home')">Photos by Alexandra Lynn</div>
+    <p class="footer-tag">Tri-Cities, WA · Weddings · Portraits · Family &amp; Maternity · Available to travel anywhere</p>
+    <nav class="footer-nav">
+      <a onclick="goPage('home')">Home</a>
+      <a onclick="goPage('services')">Services</a>
+      <a onclick="goPage('galleries')">Galleries</a>
+      <a onclick="goPage('about')">About</a>
+      <a onclick="goPage('investment')">Investment</a>
+      <a onclick="goPage('contact')">Contact</a>
+    </nav>
+    <div class="footer-social">
+      <a href="https://instagram.com/photosbyalexandralynn" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=61590753842857" target="_blank">Facebook</a>
+      <a href="mailto:photosbyalexandralynn@gmail.com">Email</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Photos by Alexandra Lynn · All rights reserved</p>
+  </div>
+</footer>
+
+<!-- ══════════ HIDDEN: REVIEWS (add back when ready) ══════════ -->
+<!--
+<section id="words-section" style="display:none;">
+  <div style="max-width:900px;margin:0 auto;padding:8rem 2rem;">
+    REVIEWS PLACEHOLDER — add real client reviews here
+    <div class="word-item">
+      <p class="word-quote">...</p>
+      <p class="word-name">...</p>
+      <p class="word-type">...</p>
+    </div>
+  </div>
+</section>
+-->
+
+<script>
+  // ── Page titles ──────────────────────────────────────────────
+  const pageTitles = {
+    home:       'Photos by Alexandra Lynn | Tri-Cities, WA Photographer',
+    services:   'Services | Photos by Alexandra Lynn',
+    investment: 'Investment & Pricing | Photos by Alexandra Lynn',
+    about:      'About | Photos by Alexandra Lynn',
+    galleries:  'Galleries | Photos by Alexandra Lynn',
+    contact:    'Contact | Photos by Alexandra Lynn'
+  };
+
+  // ── Mobile nav ───────────────────────────────────────────────
+  function toggleMobileNav() {
+    const ham = document.getElementById('nav-ham');
+    const mob = document.getElementById('nav-mobile');
+    ham.classList.toggle('open');
+    mob.classList.toggle('open');
+    document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
+  }
+
+  // ── Page navigation ──────────────────────────────────────────
+  const pages = ['home','services','investment','about','galleries','contact'];
+
+  function goPage(pageId, sectionId) {
+    // Hide all pages
+    pages.forEach(p => {
+      const el = document.getElementById('page-' + p);
+      if (el) el.classList.remove('active');
+    });
+
+    // Show target page
+    const target = document.getElementById('page-' + pageId);
+    if (target) target.classList.add('active');
+
+    // Update page title
+    if (pageTitles[pageId]) document.title = pageTitles[pageId];
+
+    // Nav state
+    const nav = document.getElementById('site-nav');
+    if (pageId === 'home') {
+      nav.classList.remove('solid');
+    } else {
+      nav.classList.add('solid');
+    }
+
+    // Update active nav link
+    document.querySelectorAll('.nav-links a[data-page]').forEach(a => {
+      a.classList.toggle('active-page', a.dataset.page === pageId);
+    });
+
+    // Scroll to top (or section)
+    window.scrollTo(0, 0);
+
+    if (sectionId) {
+      setTimeout(() => {
+        const sec = document.getElementById('svc-' + sectionId) || document.getElementById('inv-' + sectionId);
+        if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 80);
+    }
+
+    // Update URL hash
+    history.pushState({pageId, sectionId}, '', '#' + pageId + (sectionId ? '/' + sectionId : ''));
+  }
+
+  function goInvestment(section) {
+    goPage('investment', section);
+  }
+
+  // ── Investment sticky nav ────────────────────────────────────
+  function scrollInv(id, el) {
+    document.querySelectorAll('.inv-nav-item').forEach(i => i.classList.remove('active'));
+    if (el) el.classList.add('active');
+    const sec = document.getElementById(id);
+    if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ── Investment scroll spy ─────────────────────────────────────
+  const invSections = ['inv-weddings', 'inv-seniors', 'inv-family'];
+  const invObserver = new IntersectionObserver((entries) => {
+    const investPage = document.getElementById('page-investment');
+    if (!investPage || !investPage.classList.contains('active')) return;
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        document.querySelectorAll('.inv-nav-item').forEach(item => {
+          item.classList.toggle('active', item.dataset.section === id);
+        });
+      }
+    });
+  }, { rootMargin: '-10% 0px -60% 0px', threshold: 0 });
+
+  // ── FAQ accordion ─────────────────────────────────────────────
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // ── Gallery filter ───────────────────────────────────────────
+  function filterGallery(cat, btn) {
+    document.querySelectorAll('.gfilter-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    document.querySelectorAll('.gallery-cell').forEach(cell => {
+      const show = cat === 'all' || cell.dataset.cat === cat;
+      cell.style.display = show ? 'block' : 'none';
+    });
+  }
+
+  // ── Nav scroll (home only) ───────────────────────────────────
+  const siteNav = document.getElementById('site-nav');
+  window.addEventListener('scroll', () => {
+    const homePage = document.getElementById('page-home');
+    if (homePage && homePage.classList.contains('active')) {
+      siteNav.classList.toggle('scrolled', window.scrollY > 60);
+    }
+  });
+
+  // ── Form submit (Formspree) ──────────────────────────────────
+  // To activate: create a free account at formspree.io, create a form,
+  // then replace YOUR_FORM_ID below with your actual form ID.
+  const FORMSPREE_ID = 'xlgkakad';
+
+  async function submitForm(e, form) {
+    e.preventDefault();
+    const btn = form.querySelector('.csub');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    if (FORMSPREE_ID === 'YOUR_FORM_ID') {
+      // Formspree not yet configured — show success anyway for testing
+      btn.textContent = 'Sent! I\'ll be in touch soon.';
+      btn.style.background = 'var(--blue-dk)';
+      return;
+    }
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if (res.ok) {
+        btn.textContent = 'Sent! I\'ll be in touch soon.';
+        btn.style.background = 'var(--blue-dk)';
+      } else {
+        btn.textContent = 'Something went wrong — email me directly.';
+        btn.style.background = '#c0392b';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Something went wrong — email me directly.';
+      btn.style.background = '#c0392b';
+      btn.disabled = false;
+    }
+  }
+
+  // ── Handle initial hash + inv scroll spy setup ───────────────
+  window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash.replace('#','');
+    if (hash) {
+      const [pageId, sectionId] = hash.split('/');
+      if (pages.includes(pageId)) goPage(pageId, sectionId);
+    }
+    invSections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) invObserver.observe(el);
+    });
+  });
+
+  window.addEventListener('popstate', (e) => {
+    if (e.state && e.state.pageId) goPage(e.state.pageId, e.state.sectionId);
+  });
+</script>
+</body>
+</html>
