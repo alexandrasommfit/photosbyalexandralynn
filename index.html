@@ -415,7 +415,7 @@
        INVESTMENT PAGE
     ══════════════════════════════════════════════════════════ */
     .inv-nav {
-      position: sticky; top: 70px; z-index: 100; background: white;
+      position: sticky; top: 81px; z-index: 100; background: white;
       border-bottom: 1px solid var(--border-solid);
       display: flex; overflow-x: auto; padding: 0 2rem;
     }
@@ -517,7 +517,7 @@
       font-size: .6rem; letter-spacing: .18em; text-transform: uppercase;
       padding: .7rem 1.4rem; color: var(--light); cursor: pointer;
       border-bottom: 2px solid transparent; transition: all .2s; background: none; border: none;
-      border-bottom: 2px solid transparent; font-family: 'Jost', sans-serif;
+      font-family: 'Jost', sans-serif;
     }
     .gfilter-btn:hover, .gfilter-btn.active { color: var(--blue); border-bottom-color: var(--blue); }
     .gallery-grid {
@@ -566,7 +566,6 @@
       .work-cell.tall { grid-row: span 1; }
       .hs-grid { grid-template-columns: 1fr; }
       .hs-card-img { height: 300px; }
-      .hs-more { grid-template-columns: 1fr 1fr; }
       .service-block { grid-template-columns: 1fr; }
       .service-block:nth-child(even) .service-block-photo { order: 0; }
       .service-block:nth-child(even) .service-block-text { order: 0; }
@@ -575,7 +574,6 @@
       .about-split { grid-template-columns: 1fr; }
       .about-split-photo { min-height: 65vw; }
       .about-split-text { padding: 4rem 1.5rem; }
-      .values-grid { grid-template-columns: 1fr; gap: 2rem; }
       .footer-ig { grid-template-columns: repeat(3,1fr); }
       .gallery-grid { grid-template-columns: 1fr 1fr; }
       .crow { grid-template-columns: 1fr; }
@@ -742,7 +740,7 @@
     <div class="meet-bg"></div>
     <div class="meet-content">
       <p class="meet-pre">let's connect</p>
-      <h2 class="meet-title">Ready to tell<br>your story?</h2>
+      <h2 class="meet-title">Let's create<br>something real.</h2>
       <p class="meet-body">Whether you're planning a wedding, a portrait session, or a family shoot — I'd love to hear about your vision. No pressure, just a conversation about what matters most to you.</p>
       <span class="btn btn-white" onclick="goPage('contact')">Let's Chat</span>
     </div>
@@ -832,26 +830,29 @@
       <p class="contact-pre">ready to start?</p>
       <h2 class="contact-title-sm">Let's make something beautiful together</h2>
       <p class="contact-body-sm">Tell me about your session and I'll be in touch within 24–48 hours.</p>
-      <form class="cform" onsubmit="submitForm(event,this)">
+      <form class="cform" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="submitForm(event,this)">
+        <input type="hidden" name="form-name" value="contact"/>
         <div class="crow">
-          <div class="cfield"><label>First Name</label><input type="text" required/></div>
-          <div class="cfield"><label>Last Name</label><input type="text" required/></div>
+          <div class="cfield"><label>First Name</label><input type="text" name="first_name" required/></div>
+          <div class="cfield"><label>Last Name</label><input type="text" name="last_name" required/></div>
         </div>
-        <div class="cfield"><label>Email Address</label><input type="email" required/></div>
+        <div class="cfield"><label>Email Address</label><input type="email" name="email" required/></div>
+        <div class="cfield"><label>Phone (optional)</label><input type="tel" name="phone"/></div>
         <div class="cfield">
-          <label>Service Interested In</label>
-          <select>
-            <option value="">Select...</option>
+          <label>What are you looking for?</label>
+          <select name="service">
+            <option value="">Select a service...</option>
             <option>Wedding / Engagement</option>
             <option>Portraits</option>
             <option>Family Session</option>
             <option>Maternity</option>
-            <option>Not sure yet</option>
+            <option>Not sure yet — let's talk</option>
           </select>
         </div>
-        <div class="cfield"><label>Approximate Date or Timeframe</label><input type="text" placeholder="e.g. September 2026, sometime this fall…"/></div>
-        <div class="cfield"><label>Tell me about your vision</label><textarea placeholder="Share anything that would help me understand what you're looking for…"></textarea></div>
-        <button type="submit" class="csub">Send Inquiry</button>
+        <div class="cfield"><label>Approximate Date or Timeframe</label><input type="text" name="timeframe" placeholder="e.g. September 2026, sometime this fall, ASAP…"/></div>
+        <div class="cfield"><label>Tell me about your vision</label><textarea name="message" placeholder="Share anything — the vibe you're going for, your venue, your family dynamic, what matters most to you. The more I know, the better I can help."></textarea></div>
+        <p style="position:absolute;left:-9999px;" aria-hidden="true"><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"/></label></p>
+        <button type="submit" class="csub">Send My Inquiry</button>
       </form>
       <p class="contact-alt-sm">Or email directly: <a href="mailto:photosbyalexandralynn@gmail.com">photosbyalexandralynn@gmail.com</a></p>
     </div>
@@ -1107,25 +1108,29 @@
       <p class="contact-pre">love what you see?</p>
       <h2 class="contact-title-sm">Let's create your gallery</h2>
       <p class="contact-body-sm">Tell me about your session and I'll be in touch within 24–48 hours.</p>
-      <form class="cform" onsubmit="submitForm(event,this)">
+      <form class="cform" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="submitForm(event,this)">
+        <input type="hidden" name="form-name" value="contact"/>
         <div class="crow">
-          <div class="cfield"><label>First Name</label><input type="text" required/></div>
-          <div class="cfield"><label>Last Name</label><input type="text" required/></div>
+          <div class="cfield"><label>First Name</label><input type="text" name="first_name" required/></div>
+          <div class="cfield"><label>Last Name</label><input type="text" name="last_name" required/></div>
         </div>
-        <div class="cfield"><label>Email Address</label><input type="email" required/></div>
+        <div class="cfield"><label>Email Address</label><input type="email" name="email" required/></div>
+        <div class="cfield"><label>Phone (optional)</label><input type="tel" name="phone"/></div>
         <div class="cfield">
           <label>What are you looking for?</label>
-          <select>
-            <option value="">Select...</option>
+          <select name="service">
+            <option value="">Select a service...</option>
             <option>Wedding / Engagement</option>
             <option>Portraits</option>
             <option>Family Session</option>
             <option>Maternity</option>
-            <option>Not sure yet</option>
+            <option>Not sure yet — let's talk</option>
           </select>
         </div>
-        <div class="cfield"><label>Tell me about your vision</label><textarea placeholder="Share anything that would help me understand what you're looking for…"></textarea></div>
-        <button type="submit" class="csub">Send Inquiry</button>
+        <div class="cfield"><label>Approximate Date or Timeframe</label><input type="text" name="timeframe" placeholder="e.g. September 2026, sometime this fall, ASAP…"/></div>
+        <div class="cfield"><label>Tell me about your vision</label><textarea name="message" placeholder="Share anything — the vibe you're going for, your venue, your family dynamic, what matters most to you. The more I know, the better I can help."></textarea></div>
+        <p style="position:absolute;left:-9999px;" aria-hidden="true"><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"/></label></p>
+        <button type="submit" class="csub">Send My Inquiry</button>
       </form>
     </div>
   </div>
@@ -1163,25 +1168,29 @@
       <p class="contact-pre">let's meet</p>
       <h2 class="contact-title-sm">I'd love to hear about your vision</h2>
       <p class="contact-body-sm">No pressure — just a conversation. Tell me a little about what you're looking for and I'll be back in touch within 24–48 hours.</p>
-      <form class="cform" onsubmit="submitForm(event,this)">
+      <form class="cform" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="submitForm(event,this)">
+        <input type="hidden" name="form-name" value="contact"/>
         <div class="crow">
-          <div class="cfield"><label>First Name</label><input type="text" required/></div>
-          <div class="cfield"><label>Last Name</label><input type="text" required/></div>
+          <div class="cfield"><label>First Name</label><input type="text" name="first_name" required/></div>
+          <div class="cfield"><label>Last Name</label><input type="text" name="last_name" required/></div>
         </div>
-        <div class="cfield"><label>Email Address</label><input type="email" required/></div>
+        <div class="cfield"><label>Email Address</label><input type="email" name="email" required/></div>
+        <div class="cfield"><label>Phone (optional)</label><input type="tel" name="phone"/></div>
         <div class="cfield">
           <label>What are you looking for?</label>
-          <select>
-            <option value="">Select...</option>
+          <select name="service">
+            <option value="">Select a service...</option>
             <option>Wedding / Engagement</option>
             <option>Portraits</option>
             <option>Family Session</option>
             <option>Maternity</option>
-            <option>Not sure yet</option>
+            <option>Not sure yet — let's talk</option>
           </select>
         </div>
-        <div class="cfield"><label>Tell me about your vision</label><textarea placeholder="Share anything that would help me understand what you're looking for…"></textarea></div>
-        <button type="submit" class="csub">Send Message</button>
+        <div class="cfield"><label>Approximate Date or Timeframe</label><input type="text" name="timeframe" placeholder="e.g. September 2026, sometime this fall, ASAP…"/></div>
+        <div class="cfield"><label>Tell me about your vision</label><textarea name="message" placeholder="Share anything — the vibe you're going for, your venue, your family dynamic, what matters most to you. The more I know, the better I can help."></textarea></div>
+        <p style="position:absolute;left:-9999px;" aria-hidden="true"><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"/></label></p>
+        <button type="submit" class="csub">Send My Inquiry</button>
       </form>
       <p class="contact-alt-sm">Or reach out directly: <a href="mailto:photosbyalexandralynn@gmail.com">photosbyalexandralynn@gmail.com</a></p>
     </div>
@@ -1207,7 +1216,7 @@
       </div>
       <div class="contact-info-item">
         <div class="contact-info-label">Instagram</div>
-        <div class="contact-info-val"><a href="https://instagram.com/photosbyalexandralynn" target="_blank">@photosbyalexandralynn</a></div>
+        <div class="contact-info-val"><a href="https://instagram.com/photosbyalexandralynn" target="_blank" rel="noopener noreferrer">@photosbyalexandralynn</a></div>
       </div>
       <div class="contact-info-item">
         <div class="contact-info-label">Location</div>
@@ -1223,16 +1232,17 @@
       <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--text);line-height:1.1;margin-bottom:.8rem;">Tell me about your vision</h2>
       <p style="color:var(--light);font-size:.9rem;">No pressure — I love chatting about what you're dreaming of before anything is committed.</p>
     </div>
-    <form class="cform" onsubmit="submitForm(event,this)">
+    <form class="cform" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="submitForm(event,this)">
+      <input type="hidden" name="form-name" value="contact"/>
       <div class="crow">
-        <div class="cfield"><label>First Name</label><input type="text" required/></div>
-        <div class="cfield"><label>Last Name</label><input type="text" required/></div>
+        <div class="cfield"><label>First Name</label><input type="text" name="first_name" required/></div>
+        <div class="cfield"><label>Last Name</label><input type="text" name="last_name" required/></div>
       </div>
-      <div class="cfield"><label>Email Address</label><input type="email" required/></div>
-      <div class="cfield"><label>Phone (optional)</label><input type="tel"/></div>
+      <div class="cfield"><label>Email Address</label><input type="email" name="email" required/></div>
+      <div class="cfield"><label>Phone (optional)</label><input type="tel" name="phone"/></div>
       <div class="cfield">
         <label>What are you looking for?</label>
-        <select>
+        <select name="service">
           <option value="">Select a service...</option>
           <option>Wedding / Engagement</option>
           <option>Portraits</option>
@@ -1241,8 +1251,9 @@
           <option>Not sure yet — let's talk</option>
         </select>
       </div>
-      <div class="cfield"><label>Approximate Date or Timeframe</label><input type="text" placeholder="e.g. September 2026, sometime this fall, ASAP…"/></div>
-      <div class="cfield"><label>Tell me about your vision</label><textarea placeholder="Share anything — the vibe you're going for, your venue, your family dynamic, what matters most to you. The more I know, the better I can help."></textarea></div>
+      <div class="cfield"><label>Approximate Date or Timeframe</label><input type="text" name="timeframe" placeholder="e.g. September 2026, sometime this fall, ASAP…"/></div>
+      <div class="cfield"><label>Tell me about your vision</label><textarea name="message" placeholder="Share anything — the vibe you're going for, your venue, your family dynamic, what matters most to you. The more I know, the better I can help."></textarea></div>
+      <p style="position:absolute;left:-9999px;" aria-hidden="true"><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"/></label></p>
       <button type="submit" class="csub">Send My Inquiry</button>
     </form>
   </div>
@@ -1291,8 +1302,8 @@
       <a onclick="goPage('contact')">Contact</a>
     </nav>
     <div class="footer-social">
-      <a href="https://instagram.com/photosbyalexandralynn" target="_blank">Instagram</a>
-      <a href="https://www.facebook.com/profile.php?id=61590753842857" target="_blank">Facebook</a>
+      <a href="https://instagram.com/photosbyalexandralynn" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=61590753842857" target="_blank" rel="noopener noreferrer">Facebook</a>
       <a href="mailto:photosbyalexandralynn@gmail.com">Email</a>
     </div>
     <p class="footer-copy">&copy; 2026 Photos by Alexandra Lynn · All rights reserved</p>
@@ -1431,29 +1442,20 @@
     }
   });
 
-  // ── Form submit (Formspree) ──────────────────────────────────
-  // To activate: create a free account at formspree.io, create a form,
-  // then replace YOUR_FORM_ID below with your actual form ID.
-  const FORMSPREE_ID = 'xlgkakad';
-
+  // ── Form submit (Netlify Forms — built into hosting, no external account needed) ──
   async function submitForm(e, form) {
     e.preventDefault();
     const btn = form.querySelector('.csub');
     btn.textContent = 'Sending…';
     btn.disabled = true;
 
-    if (FORMSPREE_ID === 'YOUR_FORM_ID') {
-      // Formspree not yet configured — show success anyway for testing
-      btn.textContent = 'Sent! I\'ll be in touch soon.';
-      btn.style.background = 'var(--blue-dk)';
-      return;
-    }
+    const encoded = new URLSearchParams(new FormData(form)).toString();
 
     try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      const res = await fetch('/', {
         method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encoded
       });
       if (res.ok) {
         btn.textContent = 'Sent! I\'ll be in touch soon.';
