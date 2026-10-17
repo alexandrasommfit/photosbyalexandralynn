@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Consent defaults (analytics cookies off until visitor accepts) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    var pbalConsent = null;
+    try { pbalConsent = localStorage.getItem('pbal-consent'); } catch (e) {}
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: pbalConsent === 'granted' ? 'granted' : 'denied',
+      wait_for_update: 500
+    });
+  </script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2ZHEXMDG0L"></script>
   <script>
@@ -23,13 +37,14 @@
   <meta name="description" content="Wedding, portrait & family photographer in Tri-Cities, WA. Warm, romantic, real. Available to travel anywhere."/>
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%237EB5C8'/><text x='16' y='23' font-family='serif' font-size='20' font-weight='bold' fill='white' text-anchor='middle'>A</text></svg>"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2315232B'/><text x='16' y='23' font-family='serif' font-size='20' font-weight='bold' fill='%23F7F5F1' text-anchor='middle'>A</text></svg>"/>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="Photos by Alexandra Lynn | Tri-Cities, WA Photographer"/>
   <meta property="og:description" content="Wedding, portrait & family photographer in Tri-Cities, WA. Warm, romantic, real. Available to travel anywhere."/>
   <meta property="og:url" content="https://photosbyalexandralynn.com"/>
+  <link rel="canonical" href="https://photosbyalexandralynn.com/"/>
   <meta property="og:image" content="https://photosbyalexandralynn.com/og-image.png"/>
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
@@ -45,7 +60,9 @@
     "name": "Photos by Alexandra Lynn",
     "description": "Wedding, portrait & family photographer based in Tri-Cities, WA. Available to travel anywhere.",
     "email": "photosbyalexandralynn@gmail.com",
+    "telephone": "+1-509-713-2671",
     "url": "https://photosbyalexandralynn.com",
+    "image": "https://photosbyalexandralynn.com/og-image.png",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Richland",
@@ -67,14 +84,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
+      /* Brand guide: Navy, Dusty Blue, Pale Blue, Cream, Ink */
       --white:  #FFFFFF;
-      --off:    #FAFAF8;
-      --blue:   #7EB5C8;
-      --blue-dk:#5A96A8;
-      --text:   #2C2C2C;
-      --body:   #3D3D3D;
-      --light:  #6A6A6A;
-      --border: rgba(126,181,200,.22);
+      --off:    #F7F5F1;
+      --navy:   #15232B;
+      --blue:   #8FB2C4;
+      --text:   #15232B;
+      --body:   #2B3540;
+      --light:  #2B3540;
+      --border: rgba(143,178,196,.22);
       --border-solid: #DDE8EC;
     }
 
@@ -82,6 +100,31 @@
     body { font-family: 'Jost', sans-serif; font-weight: 300; color: var(--body); background: var(--white); line-height: 1.75; overflow-x: hidden; }
     img { display: block; width: 100%; height: 100%; object-fit: cover; }
     a { color: inherit; text-decoration: none; }
+
+    /* ─── ACCESSIBILITY & CONSENT ────────────────────────────── */
+    .skip-link { position: absolute; left: -9999px; top: .5rem; z-index: 500; background: var(--white); color: var(--navy); padding: .8rem 1.2rem; border: 2px solid var(--navy); font-size: .8rem; }
+    .skip-link:focus { left: .5rem; }
+    a:focus-visible, button:focus-visible, select:focus-visible, textarea:focus-visible, input:focus-visible {
+      outline: 2px solid var(--navy); outline-offset: 3px; box-shadow: 0 0 0 5px var(--white);
+    }
+    main:focus, h1:focus { outline: none; box-shadow: none; }
+    .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .form-consent { font-size: .74rem; color: var(--body); line-height: 1.6; margin: .2rem 0 1rem; }
+    .form-consent a { color: var(--navy); text-decoration: underline; text-decoration-color: var(--blue); text-underline-offset: .2em; }
+    .cookie-banner { position: fixed; left: 1rem; right: 1rem; bottom: 1rem; z-index: 400; max-width: 760px; margin: 0 auto; background: var(--off); color: var(--body); border: 1px solid var(--navy); padding: 1.1rem 1.4rem; display: flex; gap: 1.2rem; align-items: center; justify-content: space-between; flex-wrap: wrap; box-shadow: 0 6px 30px rgba(21,35,43,.18); }
+    .cookie-banner[hidden] { display: none; }
+    .cookie-banner p { font-size: .8rem; line-height: 1.6; flex: 1 1 320px; }
+    .cookie-banner a { color: var(--navy); text-decoration: underline; text-decoration-color: var(--blue); text-underline-offset: .2em; }
+    .cookie-actions { display: flex; gap: .6rem; }
+    .cookie-actions button { font-family: 'Jost', sans-serif; font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; padding: .75rem 1.5rem; cursor: pointer; border: 1px solid var(--navy); }
+    .cookie-actions .cookie-accept { background: var(--blue); color: var(--navy); border-color: var(--blue); }
+    .cookie-actions .cookie-accept:hover { background: var(--navy); color: white; border-color: var(--navy); }
+    .cookie-actions .cookie-decline { background: transparent; color: var(--navy); }
+    .cookie-actions .cookie-decline:hover { background: var(--navy); color: white; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
 
     /* ─── PAGE SYSTEM ─────────────────────────────────────────── */
     .page { display: none; }
@@ -114,18 +157,20 @@
     }
     #site-nav.scrolled .nav-links a,
     #site-nav.solid .nav-links a { color: var(--light); }
-    .nav-links a:hover,
+    .nav-links a:hover { color: var(--blue); }
     #site-nav.scrolled .nav-links a:hover,
-    #site-nav.solid .nav-links a:hover { color: var(--blue); }
+    #site-nav.solid .nav-links a:hover { color: var(--navy); text-decoration: underline; text-decoration-color: var(--blue); text-underline-offset: .5em; }
     .nav-links a.active-page { color: var(--blue) !important; }
+    #site-nav.scrolled .nav-links a.active-page,
+    #site-nav.solid .nav-links a.active-page { color: var(--navy) !important; text-decoration: underline; text-decoration-color: var(--blue); text-decoration-thickness: 2px; text-underline-offset: .5em; }
     .nav-cta {
       font-size: .64rem; letter-spacing: .16em; text-transform: uppercase;
       padding: .55rem 1.4rem; border: 1px solid rgba(255,255,255,.5);
       color: white; transition: all .25s; cursor: pointer;
     }
     #site-nav.scrolled .nav-cta,
-    #site-nav.solid .nav-cta { border-color: var(--blue); color: var(--blue); }
-    .nav-cta:hover { background: var(--blue); border-color: var(--blue); color: white !important; }
+    #site-nav.solid .nav-cta { border-color: var(--navy); color: var(--navy); }
+    .nav-cta:hover { background: var(--blue); border-color: var(--blue); color: var(--navy) !important; }
 
     /* ─── MOBILE NAV ─────────────────────────────────────────── */
     .nav-ham {
@@ -151,18 +196,18 @@
       font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700;
       color: var(--text); cursor: pointer; transition: color .2s;
     }
-    .nav-mobile a:hover { color: var(--blue); }
+    .nav-mobile a:hover { text-decoration: underline; text-decoration-color: var(--blue); text-underline-offset: .2em; }
     .nav-mobile .nav-mob-cta {
       font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
-      padding: .9rem 2.4rem; border: 1px solid var(--blue); color: var(--blue);
+      padding: .9rem 2.4rem; border: 1px solid var(--navy); color: var(--navy);
       cursor: pointer; transition: all .25s; margin-top: 1rem;
     }
-    .nav-mobile .nav-mob-cta:hover { background: var(--blue); color: white; }
+    .nav-mobile .nav-mob-cta:hover { background: var(--blue); border-color: var(--blue); color: var(--navy); }
 
     /* ─── SHARED COMPONENTS ──────────────────────────────────── */
     .eyebrow {
       font-size: .62rem; letter-spacing: .28em; text-transform: uppercase;
-      color: var(--blue); margin-bottom: 1rem; display: block;
+      color: var(--navy); margin-bottom: 1rem; display: block;
     }
     .section-title {
       font-family: 'Playfair Display', serif;
@@ -184,15 +229,15 @@
     }
     .photo-ph-label {
       font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
-      color: var(--blue); text-align: center; padding: 1rem;
+      color: var(--navy); text-align: center; padding: 1rem;
     }
 
     /* ─── BTN ────────────────────────────────────────────────── */
     .btn { display: inline-block; font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; padding: .9rem 2.2rem; cursor: pointer; transition: all .25s; }
-    .btn-fill { background: var(--blue); color: white; border: 1px solid var(--blue); }
-    .btn-fill:hover { background: var(--blue-dk); border-color: var(--blue-dk); }
-    .btn-outline { background: transparent; color: var(--blue); border: 1px solid var(--blue); }
-    .btn-outline:hover { background: var(--blue); color: white; }
+    .btn-fill { background: var(--blue); color: var(--navy); border: 1px solid var(--blue); }
+    .btn-fill:hover { background: var(--navy); border-color: var(--navy); color: white; }
+    .btn-outline { background: transparent; color: var(--navy); border: 1px solid var(--navy); }
+    .btn-outline:hover { background: var(--navy); color: white; }
     .btn-white { background: white; color: var(--text); border: 1px solid white; }
     .btn-white:hover { background: transparent; color: white; border-color: white; }
 
@@ -204,7 +249,7 @@
     .contact-inner-sm { max-width: 680px; margin: 0 auto; text-align: center; }
     .contact-pre {
       font-family: 'Cormorant Garamond', serif; font-style: italic;
-      font-size: 1.55rem; color: var(--blue); margin-bottom: .6rem;
+      font-size: 1.55rem; color: var(--navy); margin-bottom: .6rem;
     }
     .contact-title-sm {
       font-family: 'Playfair Display', serif;
@@ -224,17 +269,17 @@
       font-family: 'Jost', sans-serif; font-size: .88rem; font-weight: 300; color: var(--text);
       outline: none; transition: border-color .2s; -webkit-appearance: none;
     }
-    .cfield input:focus, .cfield select:focus, .cfield textarea:focus { border-color: var(--blue); }
+    .cfield input:focus, .cfield select:focus, .cfield textarea:focus { border-color: var(--navy); box-shadow: 0 0 0 1px var(--navy); }
     .cfield textarea { resize: vertical; min-height: 120px; }
     .csub {
       align-self: center; padding: .95rem 3.2rem;
-      background: var(--blue); color: white; border: none;
+      background: var(--blue); color: var(--navy); border: none;
       font-family: 'Jost', sans-serif; font-size: .64rem; letter-spacing: .2em; text-transform: uppercase;
       cursor: pointer; transition: background .25s; margin-top: .4rem;
     }
-    .csub:hover { background: var(--blue-dk); }
+    .csub:hover { background: var(--navy); color: white; }
     .contact-alt-sm { margin-top: 2rem; font-size: .76rem; color: var(--light); }
-    .contact-alt-sm a { color: var(--blue); }
+    .contact-alt-sm a { color: var(--navy); text-decoration: underline; text-decoration-color: var(--blue); text-underline-offset: .25em; }
 
     /* ─── FOOTER ──────────────────────────────────────────────── */
     #site-footer {
@@ -249,10 +294,10 @@
     .footer-ig-cell:hover img { transform: scale(1.06); }
     .footer-ig-overlay {
       position: absolute; inset: 0;
-      background: rgba(126,181,200,0); display: flex; align-items: center; justify-content: center;
+      background: rgba(143,178,196,0); display: flex; align-items: center; justify-content: center;
       transition: background .3s;
     }
-    .footer-ig-cell:hover .footer-ig-overlay { background: rgba(126,181,200,.25); }
+    .footer-ig-cell:hover .footer-ig-overlay { background: rgba(21,35,43,.55); }
     .footer-ig-label {
       font-size: .58rem; letter-spacing: .16em; text-transform: uppercase;
       color: white; opacity: 0; transition: opacity .3s;
@@ -273,14 +318,16 @@
       font-size: .62rem; letter-spacing: .14em; text-transform: uppercase;
       color: var(--light); transition: color .2s; cursor: pointer;
     }
-    .footer-nav a:hover { color: var(--blue); }
+    .footer-nav a:hover { color: var(--navy); text-decoration: underline; text-decoration-color: var(--blue); text-underline-offset: .4em; }
+    .footer-nav button { font-family: inherit; font-weight: inherit; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--light); background: none; border: none; cursor: pointer; padding: 0; }
+    .footer-nav button:hover { color: var(--navy); text-decoration: underline; text-decoration-color: var(--blue); text-underline-offset: .4em; }
     .footer-social { display: flex; justify-content: center; gap: 1.4rem; margin-bottom: 1.6rem; }
     .footer-social a {
       font-size: .62rem; letter-spacing: .14em; text-transform: uppercase;
-      color: var(--blue); transition: color .2s;
+      color: var(--navy); transition: color .2s;
     }
-    .footer-social a:hover { color: var(--blue-dk); }
-    .footer-copy { font-size: .62rem; color: #B0B0B0; }
+    .footer-social a:hover { text-decoration: underline; text-decoration-color: var(--blue); text-underline-offset: .4em; }
+    .footer-copy { font-size: .62rem; color: var(--body); }
 
     /* ══════════════════════════════════════════════════════════
        HOME PAGE
@@ -293,11 +340,11 @@
     }
     .home-hero-img {
       position: absolute; inset: 0;
-      background: #1A2A33;
+      background: var(--navy);
     }
     .home-hero-img::after {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(160deg, rgba(10,18,22,.18) 0%, rgba(10,18,22,.52) 100%);
+      background: linear-gradient(160deg, rgba(21,35,43,.18) 0%, rgba(21,35,43,.52) 100%);
     }
     .home-hero-content {
       position: relative; z-index: 2; text-align: center; padding: 0 1.5rem;
@@ -345,17 +392,17 @@
     .hs-inner { max-width: 1100px; margin: 0 auto; }
     .hs-header { text-align: center; margin-bottom: 4rem; }
     .hs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
-    .hs-card { position: relative; overflow: hidden; cursor: pointer; }
+    .hs-card { display: block; position: relative; overflow: hidden; cursor: pointer; }
     .hs-card-img { height: 440px; }
     .hs-card-img img { transition: transform .7s ease; }
     .hs-card:hover .hs-card-img img { transform: scale(1.06); }
     .hs-card-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(10,18,22,.7) 0%, rgba(10,18,22,.05) 55%);
+      background: linear-gradient(to top, rgba(21,35,43,.7) 0%, rgba(21,35,43,.05) 55%);
       display: flex; flex-direction: column; justify-content: flex-end;
       padding: 2rem 1.8rem; transition: background .3s;
     }
-    .hs-card:hover .hs-card-overlay { background: linear-gradient(to top, rgba(10,18,22,.8) 0%, rgba(10,18,22,.1) 55%); }
+    .hs-card:hover .hs-card-overlay { background: linear-gradient(to top, rgba(21,35,43,.8) 0%, rgba(21,35,43,.1) 55%); }
     .hs-card-name {
       font-family: 'Playfair Display', serif;
       font-size: 1.55rem; font-weight: 700; color: white; line-height: 1.1; margin-bottom: .5rem;
@@ -371,11 +418,11 @@
     }
     .meet-bg {
       position: absolute; inset: 0;
-      background: #1A2A33;
+      background: var(--navy);
     }
     .meet-bg::after {
       content: ''; position: absolute; inset: 0;
-      background: rgba(10,18,22,.52);
+      background: rgba(21,35,43,.52);
     }
     .meet-content { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
     .meet-pre {
@@ -410,7 +457,7 @@
     .service-includes { margin-bottom: 2rem; }
     .service-includes-label {
       font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
-      color: var(--blue); margin-bottom: .7rem;
+      color: var(--navy); margin-bottom: .7rem;
     }
     .service-includes ul { list-style: none; }
     .service-includes li {
@@ -423,7 +470,8 @@
     }
     .service-price-link {
       font-size: .63rem; letter-spacing: .16em; text-transform: uppercase;
-      color: var(--blue); display: inline-flex; align-items: center; gap: .5rem;
+      color: var(--navy); display: inline-flex; align-items: center; gap: .5rem;
+      text-decoration: underline; text-decoration-color: var(--blue); text-underline-offset: .4em;
       transition: gap .2s; cursor: pointer; margin-top: .5rem;
     }
     .service-price-link:hover { gap: .9rem; }
@@ -442,9 +490,9 @@
     .inv-nav-item {
       font-size: .6rem; letter-spacing: .16em; text-transform: uppercase;
       padding: 1.1rem 1.4rem; color: var(--light); white-space: nowrap;
-      cursor: pointer; border-bottom: 2px solid transparent; transition: all .2s;
+      cursor: pointer; background: none; border: 0; border-bottom: 2px solid transparent; font-family: inherit; transition: all .2s;
     }
-    .inv-nav-item:hover, .inv-nav-item.active { color: var(--blue); border-bottom-color: var(--blue); }
+    .inv-nav-item:hover, .inv-nav-item.active { color: var(--navy); border-bottom-color: var(--navy); }
     .inv-section { padding: 6rem 2rem; border-bottom: 1px solid var(--border-solid); }
     .inv-section:last-of-type { border-bottom: none; }
     .inv-inner { max-width: 1000px; margin: 0 auto; }
@@ -461,7 +509,7 @@
     .inv-pkg-badge {
       position: absolute; top: -1px; left: 1.8rem;
       font-size: .55rem; letter-spacing: .14em; text-transform: uppercase;
-      background: var(--blue); color: white; padding: .3rem .7rem;
+      background: var(--blue); color: var(--navy); padding: .3rem .7rem;
     }
     .inv-pkg-name {
       font-family: 'Playfair Display', serif;
@@ -469,7 +517,7 @@
     }
     .inv-pkg-price {
       font-family: 'Playfair Display', serif;
-      font-size: 2rem; font-weight: 700; color: var(--blue);
+      font-size: 2rem; font-weight: 700; color: var(--navy);
       margin-bottom: .3rem; line-height: 1;
     }
     .inv-pkg-note { font-size: .78rem; color: var(--light); margin-bottom: 1.2rem; }
@@ -497,8 +545,8 @@
       color: var(--text); text-align: left; display: flex; justify-content: space-between;
       align-items: center; gap: 1rem;
     }
-    .faq-q:hover { color: var(--blue); }
-    .faq-arrow { font-size: .85rem; color: var(--blue); transition: transform .3s; flex-shrink: 0; }
+    .faq-q:hover { text-decoration: underline; text-decoration-color: var(--blue); text-underline-offset: .25em; }
+    .faq-arrow { font-size: .85rem; color: var(--navy); transition: transform .3s; flex-shrink: 0; }
     .faq-item.open .faq-arrow { transform: rotate(180deg); }
     .faq-body { display: none; padding-bottom: 1.4rem; }
     .faq-item.open .faq-body { display: block; }
@@ -522,10 +570,10 @@
     .legal-content h2 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--text); margin: 2.2rem 0 .7rem; }
     .legal-content h2:first-of-type { margin-top: 0; }
     .legal-content p { color: var(--body); font-size: .92rem; line-height: 1.9; margin-bottom: 1rem; }
-    .legal-content a { color: var(--blue-dk); }
+    .legal-content a { color: var(--navy); text-decoration: underline; text-decoration-color: var(--blue); text-underline-offset: .2em; }
     .about-sig {
       font-family: 'Cormorant Garamond', serif; font-style: italic;
-      font-size: 1.85rem; color: var(--blue); margin-top: 2.2rem; letter-spacing: .03em;
+      font-size: 1.85rem; color: var(--navy); margin-top: 2.2rem; letter-spacing: .03em;
     }
     .about-loc {
       font-size: .63rem; letter-spacing: .2em; text-transform: uppercase;
@@ -545,7 +593,7 @@
       border-bottom: 2px solid transparent; transition: all .2s; background: none; border: none;
       font-family: 'Jost', sans-serif;
     }
-    .gfilter-btn:hover, .gfilter-btn.active { color: var(--blue); border-bottom-color: var(--blue); }
+    .gfilter-btn:hover, .gfilter-btn.active { color: var(--navy); border-bottom-color: var(--navy); }
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3,1fr);
@@ -556,10 +604,10 @@
     .gallery-cell:hover img { transform: scale(1.05); }
     .gallery-cell-overlay {
       position: absolute; inset: 0;
-      background: rgba(126,181,200,0); transition: background .3s;
+      background: rgba(143,178,196,0); transition: background .3s;
       display: flex; align-items: center; justify-content: center;
     }
-    .gallery-cell:hover .gallery-cell-overlay { background: rgba(126,181,200,.2); }
+    .gallery-cell:hover .gallery-cell-overlay { background: rgba(143,178,196,.2); }
 
     /* ══════════════════════════════════════════════════════════
        CONTACT PAGE
@@ -575,10 +623,10 @@
     .contact-info-item { text-align: center; }
     .contact-info-label {
       font-size: .58rem; letter-spacing: .2em; text-transform: uppercase;
-      color: var(--blue); margin-bottom: .4rem;
+      color: var(--navy); margin-bottom: .4rem;
     }
     .contact-info-val { font-size: .9rem; color: var(--body); }
-    .contact-info-val a { color: var(--blue); }
+    .contact-info-val a { color: var(--navy); text-decoration: underline; text-decoration-color: var(--blue); text-underline-offset: .25em; }
 
     /* ─── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 900px) {
@@ -613,36 +661,38 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4LD8TTQ"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<a class="skip-link" href="#main" onclick="var m=document.getElementById('main');m.focus();m.scrollIntoView();return false;">Skip to main content</a>
 
 <!-- ══════════ NAV ══════════ -->
-<nav id="site-nav">
-  <span class="nav-logo" onclick="goPage('home')">Photos by Alexandra Lynn</span>
+<nav id="site-nav" aria-label="Main">
+  <a class="nav-logo" href="#home" onclick="goPage('home');return false;">Photos by Alexandra Lynn</a>
   <ul class="nav-links">
-    <li><a onclick="goPage('home')" data-page="home">Home</a></li>
-    <li><a onclick="goPage('services')" data-page="services">Services</a></li>
-    <li><a onclick="goPage('galleries')" data-page="galleries">Galleries</a></li>
-    <li><a onclick="goPage('about')" data-page="about">About</a></li>
-    <li><a onclick="goPage('investment')" data-page="investment">Investment</a></li>
+    <li><a href="#home" onclick="goPage('home');return false;" data-page="home">Home</a></li>
+    <li><a href="#services" onclick="goPage('services');return false;" data-page="services">Services</a></li>
+    <li><a href="#galleries" onclick="goPage('galleries');return false;" data-page="galleries">Galleries</a></li>
+    <li><a href="#about" onclick="goPage('about');return false;" data-page="about">About</a></li>
+    <li><a href="#investment" onclick="goPage('investment');return false;" data-page="investment">Investment</a></li>
   </ul>
-  <span class="nav-cta btn" onclick="goPage('contact')">Get in Touch</span>
-  <button class="nav-ham" id="nav-ham" onclick="toggleMobileNav()" aria-label="Menu">
+  <a class="nav-cta btn" href="#contact" onclick="goPage('contact');return false;">Get in Touch</a>
+  <button class="nav-ham" id="nav-ham" onclick="toggleMobileNav()" aria-label="Menu" aria-expanded="false" aria-controls="nav-mobile">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- Mobile nav overlay -->
-<div class="nav-mobile" id="nav-mobile">
-  <a onclick="goPage('home');toggleMobileNav()">Home</a>
-  <a onclick="goPage('services');toggleMobileNav()">Services</a>
-  <a onclick="goPage('galleries');toggleMobileNav()">Galleries</a>
-  <a onclick="goPage('about');toggleMobileNav()">About</a>
-  <a onclick="goPage('investment');toggleMobileNav()">Investment</a>
-  <span class="nav-mob-cta" onclick="goPage('contact');toggleMobileNav()">Get in Touch</span>
+<div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile">
+  <a href="#home" onclick="goPage('home');toggleMobileNav();return false;">Home</a>
+  <a href="#services" onclick="goPage('services');toggleMobileNav();return false;">Services</a>
+  <a href="#galleries" onclick="goPage('galleries');toggleMobileNav();return false;">Galleries</a>
+  <a href="#about" onclick="goPage('about');toggleMobileNav();return false;">About</a>
+  <a href="#investment" onclick="goPage('investment');toggleMobileNav();return false;">Investment</a>
+  <a class="nav-mob-cta" href="#contact" onclick="goPage('contact');toggleMobileNav();return false;">Get in Touch</a>
 </div>
 
 <!-- ══════════════════════════════════════════════════════════════
      HOME PAGE
 ══════════════════════════════════════════════════════════════ -->
+<main id="main" tabindex="-1">
 <div id="page-home" class="page active">
 
   <!-- Hero -->
@@ -653,8 +703,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h1 class="home-hero-name">Alexandra<br>Lynn</h1>
       <p class="home-hero-sub">Wedding & Portrait Photographer</p>
       <div class="home-hero-ctas">
-        <span class="btn btn-fill" onclick="goPage('contact')">Book Your Session</span>
-        <span class="btn btn-white" onclick="goPage('galleries')">View My Work</span>
+        <a class="btn btn-fill" href="#contact" onclick="goPage('contact');return false;">Book Your Session</a>
+        <a class="btn btn-white" href="#galleries" onclick="goPage('galleries');return false;">View My Work</a>
       </div>
     </div>
     <div class="hero-scroll"></div>
@@ -663,11 +713,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- Intro -->
   <section id="home-intro" style="padding:6rem 2rem;text-align:center;background:var(--white);">
     <div style="max-width:640px;margin:0 auto;">
-      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.3rem,2.5vw,1.8rem);color:var(--blue);margin-bottom:1.2rem;">Hi, I'm Alexandra.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.3rem,2.5vw,1.8rem);color:var(--navy);margin-bottom:1.2rem;">Hi, I'm Alexandra.</p>
       <p style="font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;color:var(--text);line-height:1.2;margin-bottom:1.5rem;">I photograph the moments that matter most — <em>the ones you never want to forget.</em></p>
       <p style="font-size:.95rem;color:var(--body);line-height:1.9;max-width:520px;margin:0 auto 2rem;">Based in Tri-Cities, WA and available to travel anywhere. Whether it's your wedding day, a family session, or a portrait — I'm here to make sure you have photos you'll love for the rest of your life.</p>
-      <span class="btn btn-outline" onclick="goPage('about')">More about me</span>
-      <p style="margin-top:2rem;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);">&#10022; Now booking 2027</p>
+      <a class="btn btn-outline" href="#about" onclick="goPage('about');return false;">More about me</a>
+      <p style="margin-top:2rem;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);">&#10022; Now booking 2027</p>
     </div>
   </section>
 
@@ -675,24 +725,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section id="home-work">
     <div class="work-grid">
       <div class="work-cell tall">
-        <div class="photo-ph"><span class="photo-ph-label">Wedding photography</span></div>
+        <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Wedding photography</span></div>
       </div>
       <div class="work-cell">
-        <div class="photo-ph"><span class="photo-ph-label">Portrait</span></div>
+        <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Portrait</span></div>
       </div>
       <div class="work-cell">
-        <div class="photo-ph"><span class="photo-ph-label">Couple</span></div>
+        <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Couple</span></div>
       </div>
       <div class="work-cell">
-        <div class="photo-ph"><span class="photo-ph-label">Family</span></div>
+        <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Family</span></div>
       </div>
       <div class="work-cell">
-        <div class="photo-ph"><span class="photo-ph-label">Wedding detail</span></div>
+        <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Wedding detail</span></div>
       </div>
     </div>
     <div class="work-cta">
-      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--blue);margin-bottom:.8rem;">see the full collection</p>
-      <span class="btn btn-outline" onclick="goPage('galleries')">Browse the Galleries</span>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--navy);margin-bottom:.8rem;">see the full collection</p>
+      <a class="btn btn-outline" href="#galleries" onclick="goPage('galleries');return false;">Browse the Galleries</a>
     </div>
   </section>
 
@@ -704,33 +754,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2 class="section-title">Photography for every<br><em>chapter of your story</em></h2>
       </div>
       <div class="hs-grid">
-        <div class="hs-card" onclick="goPage('services','weddings')">
+        <a class="hs-card" href="#services/weddings" onclick="goPage('services','weddings');return false;">
           <div class="hs-card-img">
-            <div class="photo-ph"><span class="photo-ph-label">Weddings</span></div>
+            <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Weddings</span></div>
           </div>
           <div class="hs-card-overlay">
             <div class="hs-card-name">Weddings &amp;<br>Engagements</div>
             <span class="hs-card-link">Learn more →</span>
           </div>
-        </div>
-        <div class="hs-card" onclick="goPage('services','portraits')">
+        </a>
+        <a class="hs-card" href="#services/portraits" onclick="goPage('services','portraits');return false;">
           <div class="hs-card-img">
-            <div class="photo-ph"><span class="photo-ph-label">Portraits</span></div>
+            <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Portraits</span></div>
           </div>
           <div class="hs-card-overlay">
             <div class="hs-card-name">Seniors, Couples<br>&amp; Portraits</div>
             <span class="hs-card-link">Learn more →</span>
           </div>
-        </div>
-        <div class="hs-card" onclick="goPage('services','family')">
+        </a>
+        <a class="hs-card" href="#services/family" onclick="goPage('services','family');return false;">
           <div class="hs-card-img">
-            <div class="photo-ph"><span class="photo-ph-label">Family</span></div>
+            <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Family</span></div>
           </div>
           <div class="hs-card-overlay">
             <div class="hs-card-name">Family &amp;<br>Maternity</div>
             <span class="hs-card-link">Learn more →</span>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -742,22 +792,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 class="section-title">Simple from start<br><em>to finish</em></h2>
       <div class="home-process-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem;margin-top:3.5rem;">
         <div>
-          <div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--blue);line-height:1;margin-bottom:.7rem;">01</div>
+          <div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--navy);line-height:1;margin-bottom:.7rem;">01</div>
           <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.5rem;">Reach out</div>
           <p style="font-size:.84rem;color:var(--body);line-height:1.75;">Fill out the contact form and tell me what you have in mind.</p>
         </div>
         <div>
-          <div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--blue);line-height:1;margin-bottom:.7rem;">02</div>
+          <div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--navy);line-height:1;margin-bottom:.7rem;">02</div>
           <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.5rem;">We connect</div>
           <p style="font-size:.84rem;color:var(--body);line-height:1.75;">I'll follow up within 48 hours to chat details and make sure we're a great fit.</p>
         </div>
         <div>
-          <div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--blue);line-height:1;margin-bottom:.7rem;">03</div>
+          <div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--navy);line-height:1;margin-bottom:.7rem;">03</div>
           <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.5rem;">Your session</div>
           <p style="font-size:.84rem;color:var(--body);line-height:1.75;">We shoot — relaxed, fun, and entirely focused on you.</p>
         </div>
         <div>
-          <div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--blue);line-height:1;margin-bottom:.7rem;">04</div>
+          <div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--navy);line-height:1;margin-bottom:.7rem;">04</div>
           <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.5rem;">Your gallery</div>
           <p style="font-size:.84rem;color:var(--body);line-height:1.75;">Your edited photos arrive in a private gallery, ready to download and share.</p>
         </div>
@@ -772,7 +822,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="meet-pre">let's connect</p>
       <h2 class="meet-title">Let's capture<br>your moment.</h2>
       <p class="meet-body">Whether you're planning a wedding, a portrait session, or a family shoot — I'd love to hear about your vision. No pressure, just a conversation about what matters most to you.</p>
-      <span class="btn btn-white" onclick="goPage('contact')">Let's Chat</span>
+      <a class="btn btn-white" href="#contact" onclick="goPage('contact');return false;">Let's Chat</a>
     </div>
   </section>
 
@@ -791,7 +841,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- Weddings & Engagements -->
   <div id="svc-weddings" class="service-block">
     <div class="service-block-photo">
-      <div class="photo-ph"><span class="photo-ph-label">Wedding photography</span></div>
+      <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Wedding photography</span></div>
     </div>
     <div class="service-block-text">
       <span class="eyebrow">01</span>
@@ -807,14 +857,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li>Engagement session included (Classic &amp; Full Day packages)</li>
         </ul>
       </div>
-      <span class="service-price-link" onclick="goInvestment('weddings')">View wedding pricing →</span>
+      <a class="service-price-link" href="#investment/weddings" onclick="goInvestment('weddings');return false;">View wedding pricing →</a>
     </div>
   </div>
 
   <!-- Seniors & Portraits -->
   <div id="svc-portraits" class="service-block">
     <div class="service-block-photo">
-      <div class="photo-ph"><span class="photo-ph-label">Senior portrait</span></div>
+      <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Senior portrait</span></div>
     </div>
     <div class="service-block-text">
       <span class="eyebrow">02</span>
@@ -829,14 +879,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li>Print-ready files included</li>
         </ul>
       </div>
-      <span class="service-price-link" onclick="goInvestment('seniors')">View portrait pricing →</span>
+      <a class="service-price-link" href="#investment/seniors" onclick="goInvestment('seniors');return false;">View portrait pricing →</a>
     </div>
   </div>
 
   <!-- Family & Maternity -->
   <div id="svc-family" class="service-block">
     <div class="service-block-photo">
-      <div class="photo-ph"><span class="photo-ph-label">Family session</span></div>
+      <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Family session</span></div>
     </div>
     <div class="service-block-text">
       <span class="eyebrow">03</span>
@@ -850,7 +900,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li>Private gallery with unlimited downloads</li>
         </ul>
       </div>
-      <span class="service-price-link" onclick="goInvestment('family')">View family pricing →</span>
+      <a class="service-price-link" href="#investment/family" onclick="goInvestment('family');return false;">View family pricing →</a>
     </div>
   </div>
 
@@ -882,6 +932,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="cfield"><label>Approximate Date or Timeframe<input type="text" name="timeframe" placeholder="e.g. September 2027, sometime this fall, ASAP…"/></label></div>
         <div class="cfield"><label>Tell me about your vision<textarea name="message" placeholder="Share anything — the vibe you're going for, your venue, your family dynamic, what matters most to you. The more I know, the better I can help."></textarea></label></div>
         <p style="position:absolute;left:-9999px;" aria-hidden="true"><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"/></label></p>
+        <p class="form-consent">By sending this inquiry, you agree that I may contact you about your session and that your information will be handled as described in the <a href="#privacy" onclick="goPage('privacy');return false;">Privacy Policy</a>.</p>
         <button type="submit" class="csub">Send My Inquiry</button>
       </form>
       <p class="contact-alt-sm">Or email directly: <a href="mailto:photosbyalexandralynn@gmail.com">photosbyalexandralynn@gmail.com</a></p>
@@ -900,10 +951,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1 class="section-title">Investment</h1>
   </div>
 
-  <nav class="inv-nav" id="inv-nav">
-    <div class="inv-nav-item active" data-section="inv-weddings" onclick="scrollInv('inv-weddings',this)">Weddings</div>
-    <div class="inv-nav-item" data-section="inv-seniors" onclick="scrollInv('inv-seniors',this)">Portraits</div>
-    <div class="inv-nav-item" data-section="inv-family" onclick="scrollInv('inv-family',this)">Family &amp; Maternity</div>
+  <nav class="inv-nav" id="inv-nav" aria-label="Pricing sections">
+    <button type="button" class="inv-nav-item active" data-section="inv-weddings" onclick="scrollInv('inv-weddings',this)">Weddings</button>
+    <button type="button" class="inv-nav-item" data-section="inv-seniors" onclick="scrollInv('inv-seniors',this)">Portraits</button>
+    <button type="button" class="inv-nav-item" data-section="inv-family" onclick="scrollInv('inv-family',this)">Family &amp; Maternity</button>
   </nav>
 
   <!-- Weddings -->
@@ -957,7 +1008,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p style="font-size:.82rem;color:var(--light);">Custom quotes available for destination weddings. Travel within 50 miles always included.</p>
       </div>
       <div style="margin-top:1.5rem;">
-        <span class="btn btn-outline" onclick="goPage('contact')">Inquire About Your Date</span>
+        <a class="btn btn-outline" href="#contact" onclick="goPage('contact');return false;">Inquire About Your Date</a>
       </div>
     </div>
   </div>
@@ -1006,7 +1057,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div style="margin-top:1.5rem;">
-        <span class="btn btn-outline" onclick="goPage('contact')">Book a Portrait Session</span>
+        <a class="btn btn-outline" href="#contact" onclick="goPage('contact');return false;">Book a Portrait Session</a>
       </div>
     </div>
   </div>
@@ -1065,7 +1116,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div style="margin-top:1.5rem;">
-        <span class="btn btn-outline" onclick="goPage('contact')">Book a Family Session</span>
+        <a class="btn btn-outline" href="#contact" onclick="goPage('contact');return false;">Book a Family Session</a>
       </div>
     </div>
   </div>
@@ -1074,23 +1125,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="inv-faq">
     <h3 class="inv-faq-title">FAQ</h3>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">How do I book? <span class="faq-arrow">&#8964;</span></button>
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">How do I book? <span class="faq-arrow">&#8964;</span></button>
       <div class="faq-body"><p class="faq-a">Fill out the contact form or send me an email. Once we align on details, I send a contract and invoice for a 25% retainer to hold your date. Your date isn't reserved until both are signed and received.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">What's your payment policy? <span class="faq-arrow">&#8964;</span></button>
-      <div class="faq-body"><p class="faq-a">A 25% retainer is due at booking. The remaining balance is due 2 weeks before your session or event date. I accept credit/debit cards and bank transfer.</p></div>
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">What's your payment policy? <span class="faq-arrow">&#8964;</span></button>
+      <div class="faq-body"><p class="faq-a">A 25% retainer is due at booking. The remaining balance is due 2 weeks before your session or event date. I accept credit/debit cards and bank transfer, processed securely through Pixieset. Sales tax is added to each invoice where applicable.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">When will I receive my photos? <span class="faq-arrow">&#8964;</span></button>
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Is the retainer refundable? <span class="faq-arrow">&#8964;</span></button>
+      <div class="faq-body"><p class="faq-a">The retainer reserves your date, so it is non-refundable once paid. If I'm ever unable to photograph your session and can't offer a replacement or a new date, you'll be refunded what you've paid for that session. Cancellation terms depend on your session type and timing, and are set out in your contract.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">When will I receive my photos? <span class="faq-arrow">&#8964;</span></button>
       <div class="faq-body"><p class="faq-a">Portrait, family, and maternity sessions: approximately 4 weeks. Weddings: approximately 8 weeks. Rush delivery may be available — just ask when you inquire.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">Do you travel outside Tri-Cities? <span class="faq-arrow">&#8964;</span></button>
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Do you travel outside Tri-Cities? <span class="faq-arrow">&#8964;</span></button>
       <div class="faq-body"><p class="faq-a">Yes — I'm available to travel anywhere. Travel within 50 miles of Tri-Cities is always included. Beyond that, travel costs are added to the package at cost (mileage, lodging if required, flights for destination sessions).</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">What if I need to reschedule? <span class="faq-arrow">&#8964;</span></button>
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">What if I need to reschedule? <span class="faq-arrow">&#8964;</span></button>
       <div class="faq-body"><p class="faq-a">Life happens. Rescheduling requests made more than 2 weeks before your session date are accommodated at no charge (subject to availability). Please refer to your contract for full details.</p></div>
     </div>
   </div>
@@ -1108,28 +1163,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <div class="gallery-filter">
-    <button class="gfilter-btn active" onclick="filterGallery('all',this)">All</button>
-    <button class="gfilter-btn" onclick="filterGallery('wedding',this)">Weddings</button>
-    <button class="gfilter-btn" onclick="filterGallery('portrait',this)">Portraits</button>
-    <button class="gfilter-btn" onclick="filterGallery('family',this)">Family &amp; Maternity</button>
+    <button class="gfilter-btn active" aria-pressed="true" onclick="filterGallery('all',this)">All</button>
+    <button class="gfilter-btn" aria-pressed="false" onclick="filterGallery('wedding',this)">Weddings</button>
+    <button class="gfilter-btn" aria-pressed="false" onclick="filterGallery('portrait',this)">Portraits</button>
+    <button class="gfilter-btn" aria-pressed="false" onclick="filterGallery('family',this)">Family &amp; Maternity</button>
   </div>
 
   <div class="gallery-grid" id="gallery-grid">
-    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
-    <div class="gallery-cell" data-cat="portrait"><div class="photo-ph"><span class="photo-ph-label">Portrait</span></div><div class="gallery-cell-overlay"></div></div>
-    <div class="gallery-cell" data-cat="family"><div class="photo-ph"><span class="photo-ph-label">Family</span></div><div class="gallery-cell-overlay"></div></div>
-    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
-    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
-    <div class="gallery-cell" data-cat="portrait"><div class="photo-ph"><span class="photo-ph-label">Portrait</span></div><div class="gallery-cell-overlay"></div></div>
-    <div class="gallery-cell" data-cat="portrait"><div class="photo-ph"><span class="photo-ph-label">Portrait</span></div><div class="gallery-cell-overlay"></div></div>
-    <div class="gallery-cell" data-cat="family"><div class="photo-ph"><span class="photo-ph-label">Family</span></div><div class="gallery-cell-overlay"></div></div>
-    <div class="gallery-cell" data-cat="family"><div class="photo-ph"><span class="photo-ph-label">Family</span></div><div class="gallery-cell-overlay"></div></div>
-    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
-    <div class="gallery-cell" data-cat="portrait"><div class="photo-ph"><span class="photo-ph-label">Portrait</span></div><div class="gallery-cell-overlay"></div></div>
-    <div class="gallery-cell" data-cat="portrait"><div class="photo-ph"><span class="photo-ph-label">Portrait</span></div><div class="gallery-cell-overlay"></div></div>
-    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
-    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
-    <div class="gallery-cell" data-cat="family"><div class="photo-ph"><span class="photo-ph-label">Family</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="portrait"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Portrait</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="family"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Family</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="portrait"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Portrait</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="portrait"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Portrait</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="family"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Family</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="family"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Family</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="portrait"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Portrait</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="portrait"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Portrait</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="family"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Family</span></div><div class="gallery-cell-overlay"></div></div>
   </div>
 
   <!-- Contact form -->
@@ -1160,6 +1215,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="cfield"><label>Approximate Date or Timeframe<input type="text" name="timeframe" placeholder="e.g. September 2027, sometime this fall, ASAP…"/></label></div>
         <div class="cfield"><label>Tell me about your vision<textarea name="message" placeholder="Share anything — the vibe you're going for, your venue, your family dynamic, what matters most to you. The more I know, the better I can help."></textarea></label></div>
         <p style="position:absolute;left:-9999px;" aria-hidden="true"><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"/></label></p>
+        <p class="form-consent">By sending this inquiry, you agree that I may contact you about your session and that your information will be handled as described in the <a href="#privacy" onclick="goPage('privacy');return false;">Privacy Policy</a>.</p>
         <button type="submit" class="csub">Send My Inquiry</button>
       </form>
     </div>
@@ -1179,7 +1235,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="about-split">
     <div class="about-split-photo">
-      <div class="photo-ph"><span class="photo-ph-label">Alexandra Lynn, photographer</span></div>
+      <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Alexandra Lynn, photographer</span></div>
     </div>
     <div class="about-split-text">
       <span class="eyebrow">Hey, I'm Alexandra.</span>
@@ -1220,6 +1276,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="cfield"><label>Approximate Date or Timeframe<input type="text" name="timeframe" placeholder="e.g. September 2027, sometime this fall, ASAP…"/></label></div>
         <div class="cfield"><label>Tell me about your vision<textarea name="message" placeholder="Share anything — the vibe you're going for, your venue, your family dynamic, what matters most to you. The more I know, the better I can help."></textarea></label></div>
         <p style="position:absolute;left:-9999px;" aria-hidden="true"><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"/></label></p>
+        <p class="form-consent">By sending this inquiry, you agree that I may contact you about your session and that your information will be handled as described in the <a href="#privacy" onclick="goPage('privacy');return false;">Privacy Policy</a>.</p>
         <button type="submit" class="csub">Send My Inquiry</button>
       </form>
       <p class="contact-alt-sm">Or reach out directly: <a href="mailto:photosbyalexandralynn@gmail.com">photosbyalexandralynn@gmail.com</a></p>
@@ -1245,6 +1302,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="contact-info-val"><a href="mailto:photosbyalexandralynn@gmail.com">photosbyalexandralynn@gmail.com</a></div>
       </div>
       <div class="contact-info-item">
+        <div class="contact-info-label">Phone</div>
+        <div class="contact-info-val"><a href="tel:+15097132671">509-713-2671</a></div>
+      </div>
+      <div class="contact-info-item">
         <div class="contact-info-label">Instagram</div>
         <div class="contact-info-val"><a href="https://instagram.com/photosbyalexandralynn" target="_blank" rel="noopener noreferrer">@photosbyalexandralynn</a></div>
       </div>
@@ -1258,7 +1319,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div style="text-align:center;margin-bottom:2.5rem;">
-      <p class="contact-pre" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.55rem;color:var(--blue);margin-bottom:.5rem;">I'd love to hear from you</p>
+      <p class="contact-pre" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.55rem;color:var(--navy);margin-bottom:.5rem;">I'd love to hear from you</p>
       <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--text);line-height:1.1;margin-bottom:.8rem;">Tell me about your vision</h2>
       <p style="color:var(--light);font-size:.9rem;">No pressure — I love chatting about what you're dreaming of before anything is committed.</p>
     </div>
@@ -1284,6 +1345,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="cfield"><label>Approximate Date or Timeframe<input type="text" name="timeframe" placeholder="e.g. September 2027, sometime this fall, ASAP…"/></label></div>
       <div class="cfield"><label>Tell me about your vision<textarea name="message" placeholder="Share anything — the vibe you're going for, your venue, your family dynamic, what matters most to you. The more I know, the better I can help."></textarea></label></div>
       <p style="position:absolute;left:-9999px;" aria-hidden="true"><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"/></label></p>
+      <p class="form-consent">By sending this inquiry, you agree that I may contact you about your session and that your information will be handled as described in the <a href="#privacy" onclick="goPage('privacy');return false;">Privacy Policy</a>.</p>
       <button type="submit" class="csub">Send My Inquiry</button>
     </form>
   </div>
@@ -1311,11 +1373,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2>How Your Information Is Handled</h2>
     <p>Contact form submissions on this site are processed through Netlify Forms, the hosting platform this website runs on. Netlify stores submitted form data securely and forwards new submissions to my email inbox. You can read more about how Netlify handles data in their own privacy policy at <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">netlify.com</a>.</p>
 
-    <h2>Client Galleries</h2>
-    <p>Once you're a client, your photo gallery is delivered through Pixieset, a separate third-party gallery platform. Pixieset's collection and use of your information for gallery hosting and delivery is governed by Pixieset's own privacy policy, not this one.</p>
+    <h2>Client Galleries &amp; Payments</h2>
+    <p>Once you're a client, your photo gallery is delivered through Pixieset, a separate third-party gallery platform. Pixieset's collection and use of your information for gallery hosting and delivery is governed by Pixieset's own privacy policy, not this one. Payments for booked sessions are also processed through Pixieset by card or bank transfer. This website does not collect payment information.</p>
 
     <h2>Cookies &amp; Tracking</h2>
-    <p>This website uses Google Tag Manager and Google Analytics (GA4) to understand how visitors find and use the site, such as which pages are viewed, roughly where visitors are located, and what type of device and browser they use. These tools may set cookies in your browser and receive information such as your IP address and browsing activity on this site. I use this information only in aggregate to improve the website and my marketing. I do not use it to identify you personally, and I don't sell it. Google processes this data under its own privacy policy, available at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.</p>
+    <p>This website uses Google Tag Manager and Google Analytics (GA4) to understand how visitors find and use the site, such as which pages are viewed, roughly where visitors are located, and what type of device and browser they use. Analytics cookies are off by default and are only set if you choose "Accept" on the cookie banner. If you decline, Google Analytics won't set analytics cookies, although Google may still receive limited, non-identifying signals such as your IP address and browser type. You can change your choice at any time using "Cookie Settings" in the footer. I use this information only in aggregate to improve the website and my marketing. I do not use it to identify you personally, and I don't sell it. Google processes this data under its own privacy policy, available at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.</p>
     <p>You can opt out of Google Analytics by using your browser's cookie settings or by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.</p>
     <p>The site also loads fonts from Google Fonts, which may cause your browser to request font files from Google's servers (including your IP address) in order to display them. This is standard for most websites and is governed by Google's own privacy policy.</p>
 
@@ -1332,7 +1394,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>I may update this policy from time to time. Changes will be posted on this page with an updated effective date.</p>
 
     <h2>Contact</h2>
-    <p>Questions about this policy? Email me at <a href="mailto:photosbyalexandralynn@gmail.com">photosbyalexandralynn@gmail.com</a>.</p>
+    <p>Questions about this policy? Photos by Alexandra Lynn is based in Richland, WA. Email me at <a href="mailto:photosbyalexandralynn@gmail.com">photosbyalexandralynn@gmail.com</a> or call <a href="tel:+15097132671">509-713-2671</a>.</p>
   </div>
 </div><!-- /page-privacy -->
 
@@ -1345,14 +1407,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1 class="section-title">Terms of Service</h1>
   </div>
   <div class="legal-content">
-    <p class="legal-updated">Effective Date: August 22, 2026</p>
+    <p class="legal-updated">Effective Date: October 17, 2026</p>
     <p>Welcome to photosbyalexandralynn.com. By using this website, you agree to the terms below. Please read them, and reach out if you have any questions.</p>
 
     <h2>Use of This Website</h2>
     <p>This site is provided for informational purposes and to help you learn about my photography services and get in touch. Please don't misuse the contact forms (for example, by submitting spam or false information) or attempt to interfere with the site's normal operation.</p>
 
     <h2>Bookings, Retainers &amp; Payment</h2>
-    <p>Booking a session requires a signed contract and a 25% retainer to hold your date — your date isn't considered reserved until both are received. The remaining balance is due 2 weeks before your session or event date. I accept credit/debit cards and bank transfer. These website terms are general information only; the specific terms of your booking are governed by your signed client contract, which takes precedence over anything stated here.</p>
+    <p>Booking a session requires a signed contract and a 25% retainer to hold your date — your date isn't considered reserved until both are received. The remaining balance is due 2 weeks before your session or event date. I accept credit/debit cards and bank transfer, processed securely through Pixieset. Prices shown on this site don't include sales tax, which is added to each invoice where applicable. These website terms are general information only; the specific terms of your booking are governed by your signed client contract, which takes precedence over anything stated here.</p>
+
+    <h2>Retainer &amp; Refunds</h2>
+    <p>The retainer reserves your date and is non-refundable once paid, to the extent permitted by law. If I'm unable to photograph your session and can't provide a comparable replacement or a new date, I'll refund the amounts you've paid for that session. If an event outside either of our control (such as severe weather or a government restriction) prevents the session and we can't find a new date, I'll refund the amounts you've paid, less any costs already incurred on your behalf that can't be recovered. What's owed if you cancel depends on your session type and how far in advance you cancel, and is set out in your signed contract, which takes precedence over this page.</p>
 
     <h2>Rescheduling &amp; Cancellations</h2>
     <p>Rescheduling requests made more than 2 weeks before your session date are accommodated at no charge, subject to availability. Please refer to your signed contract for full rescheduling and cancellation details.</p>
@@ -1379,63 +1444,76 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>I may update these terms from time to time. Changes will be posted on this page with an updated effective date.</p>
 
     <h2>Contact</h2>
-    <p>Questions about these terms? Email me at <a href="mailto:photosbyalexandralynn@gmail.com">photosbyalexandralynn@gmail.com</a>.</p>
+    <p>Questions about these terms? Photos by Alexandra Lynn is based in Richland, WA. Email me at <a href="mailto:photosbyalexandralynn@gmail.com">photosbyalexandralynn@gmail.com</a> or call <a href="tel:+15097132671">509-713-2671</a>.</p>
   </div>
 </div><!-- /page-terms -->
+
+</main>
 
 <!-- ══════════ FOOTER ══════════ -->
 <footer id="site-footer">
   <!-- Instagram grid preview -->
   <div class="footer-ig">
     <div class="footer-ig-cell">
-      <div class="photo-ph"><span class="photo-ph-label">Instagram</span></div>
+      <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Instagram</span></div>
       <div class="footer-ig-overlay"><span class="footer-ig-label">@photosbyalexandralynn</span></div>
     </div>
     <div class="footer-ig-cell">
-      <div class="photo-ph"><span class="photo-ph-label">Instagram</span></div>
+      <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Instagram</span></div>
       <div class="footer-ig-overlay"><span class="footer-ig-label">@photosbyalexandralynn</span></div>
     </div>
     <div class="footer-ig-cell">
-      <div class="photo-ph"><span class="photo-ph-label">Instagram</span></div>
+      <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Instagram</span></div>
       <div class="footer-ig-overlay"><span class="footer-ig-label">@photosbyalexandralynn</span></div>
     </div>
     <div class="footer-ig-cell">
-      <div class="photo-ph"><span class="photo-ph-label">Instagram</span></div>
+      <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Instagram</span></div>
       <div class="footer-ig-overlay"><span class="footer-ig-label">@photosbyalexandralynn</span></div>
     </div>
     <div class="footer-ig-cell">
-      <div class="photo-ph"><span class="photo-ph-label">Instagram</span></div>
+      <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Instagram</span></div>
       <div class="footer-ig-overlay"><span class="footer-ig-label">@photosbyalexandralynn</span></div>
     </div>
     <div class="footer-ig-cell">
-      <div class="photo-ph"><span class="photo-ph-label">Instagram</span></div>
+      <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Instagram</span></div>
       <div class="footer-ig-overlay"><span class="footer-ig-label">@photosbyalexandralynn</span></div>
     </div>
   </div>
 
   <div class="footer-main">
-    <div class="footer-logo" onclick="goPage('home')">Photos by Alexandra Lynn</div>
+    <a class="footer-logo" href="#home" onclick="goPage('home');return false;" style="display:block;">Photos by Alexandra Lynn</a>
     <p class="footer-tag">Tri-Cities, WA · Weddings · Portraits · Family &amp; Maternity · Available to travel anywhere</p>
-    <nav class="footer-nav">
-      <a onclick="goPage('home')">Home</a>
-      <a onclick="goPage('services')">Services</a>
-      <a onclick="goPage('galleries')">Galleries</a>
-      <a onclick="goPage('about')">About</a>
-      <a onclick="goPage('investment')">Investment</a>
-      <a onclick="goPage('contact')">Contact</a>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="#home" onclick="goPage('home');return false;">Home</a>
+      <a href="#services" onclick="goPage('services');return false;">Services</a>
+      <a href="#galleries" onclick="goPage('galleries');return false;">Galleries</a>
+      <a href="#about" onclick="goPage('about');return false;">About</a>
+      <a href="#investment" onclick="goPage('investment');return false;">Investment</a>
+      <a href="#contact" onclick="goPage('contact');return false;">Contact</a>
     </nav>
     <div class="footer-social">
       <a href="https://instagram.com/photosbyalexandralynn" target="_blank" rel="noopener noreferrer">Instagram</a>
       <a href="https://www.facebook.com/profile.php?id=61590753842857" target="_blank" rel="noopener noreferrer">Facebook</a>
       <a href="mailto:photosbyalexandralynn@gmail.com">Email</a>
+      <a href="tel:+15097132671">Call</a>
     </div>
-    <nav class="footer-nav" style="margin-top:.5rem;font-size:.68rem;opacity:.7;">
-      <a onclick="goPage('privacy')">Privacy Policy</a>
-      <a onclick="goPage('terms')">Terms of Service</a>
+    <nav class="footer-nav" aria-label="Legal" style="margin-top:.5rem;font-size:.68rem;">
+      <a href="#privacy" onclick="goPage('privacy');return false;">Privacy Policy</a>
+      <a href="#terms" onclick="goPage('terms');return false;">Terms of Service</a>
+      <button type="button" onclick="showCookieBanner()">Cookie Settings</button>
     </nav>
     <p class="footer-copy">&copy; 2026 Photos by Alexandra Lynn · All rights reserved</p>
   </div>
 </footer>
+
+<!-- Cookie consent -->
+<div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie consent" hidden>
+  <p>I use analytics cookies to learn how people use this site. They stay off unless you accept. See the <a href="#privacy" onclick="goPage('privacy');return false;">Privacy Policy</a> for details.</p>
+  <div class="cookie-actions">
+    <button type="button" class="cookie-decline" onclick="setConsent('denied')">Decline</button>
+    <button type="button" class="cookie-accept" onclick="setConsent('granted')">Accept</button>
+  </div>
+</div>
 
 <!-- ══════════ HIDDEN: REVIEWS (add back when ready) ══════════ -->
 <!--
@@ -1470,13 +1548,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const mob = document.getElementById('nav-mobile');
     ham.classList.toggle('open');
     mob.classList.toggle('open');
+    ham.setAttribute('aria-expanded', mob.classList.contains('open') ? 'true' : 'false');
     document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
   }
 
   // ── Page navigation ──────────────────────────────────────────
   const pages = ['home','services','investment','about','galleries','contact','privacy','terms'];
 
-  function goPage(pageId, sectionId) {
+  function goPage(pageId, sectionId, fromHistory) {
     // Hide all pages
     pages.forEach(p => {
       const el = document.getElementById('page-' + p);
@@ -1503,8 +1582,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       a.classList.toggle('active-page', a.dataset.page === pageId);
     });
 
-    // Scroll to top (or section)
+    // Scroll to top (or section) and move focus for keyboard / screen reader users
     window.scrollTo(0, 0);
+    if (!fromHistory && target) {
+      const h = target.querySelector('h1');
+      if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+    }
 
     if (sectionId) {
       setTimeout(() => {
@@ -1513,8 +1596,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }, 80);
     }
 
-    // Update URL hash
-    history.pushState({pageId, sectionId}, '', '#' + pageId + (sectionId ? '/' + sectionId : ''));
+    // Update URL hash (not when responding to back/forward)
+    if (!fromHistory) history.pushState({pageId, sectionId}, '', '#' + pageId + (sectionId ? '/' + sectionId : ''));
   }
 
   function goInvestment(section) {
@@ -1549,13 +1632,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const item = btn.closest('.faq-item');
     const isOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
+    document.querySelectorAll('.faq-q').forEach(b => b.setAttribute('aria-expanded', 'false'));
+    if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
   }
 
   // ── Gallery filter ───────────────────────────────────────────
   function filterGallery(cat, btn) {
-    document.querySelectorAll('.gfilter-btn').forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
+    document.querySelectorAll('.gfilter-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+    if (btn) { btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true'); }
     document.querySelectorAll('.gallery-cell').forEach(cell => {
       const show = cat === 'all' || cell.dataset.cat === cat;
       cell.style.display = show ? 'block' : 'none';
@@ -1575,6 +1659,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   async function submitForm(e, form) {
     e.preventDefault();
     const btn = form.querySelector('.csub');
+    let status = form.querySelector('.form-status');
+    if (!status) {
+      status = document.createElement('p');
+      status.className = 'form-status sr-only';
+      status.setAttribute('role', 'status');
+      form.appendChild(status);
+    }
     btn.textContent = 'Sending…';
     btn.disabled = true;
 
@@ -1588,25 +1679,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
       if (res.ok) {
         btn.textContent = 'Sent! I\'ll be in touch soon.';
-        btn.style.background = 'var(--blue-dk)';
+        btn.style.background = 'var(--navy)';
+        btn.style.color = 'white';
+        status.textContent = 'Your inquiry was sent. I\'ll be in touch soon.';
       } else {
         btn.textContent = 'Something went wrong — email me directly.';
-        btn.style.background = '#c0392b';
+        status.textContent = 'Something went wrong sending your inquiry. Please email me directly.';
         btn.disabled = false;
       }
     } catch {
       btn.textContent = 'Something went wrong — email me directly.';
-      btn.style.background = '#c0392b';
+      status.textContent = 'Something went wrong sending your inquiry. Please email me directly.';
       btn.disabled = false;
     }
   }
 
   // ── Handle initial hash + inv scroll spy setup ───────────────
+  function routeFromHash() {
+    const [pageId, sectionId] = window.location.hash.replace('#','').split('/');
+    if (pages.includes(pageId)) goPage(pageId, sectionId, true);
+    else goPage('home', undefined, true);
+  }
+
+  // ── Cookie consent ───────────────────────────────────────────
+  function showCookieBanner() {
+    const b = document.getElementById('cookie-banner');
+    if (b) { b.hidden = false; b.querySelector('.cookie-accept').focus(); }
+  }
+  function setConsent(value) {
+    try { localStorage.setItem('pbal-consent', value); } catch (e) {}
+    gtag('consent', 'update', { analytics_storage: value });
+    const b = document.getElementById('cookie-banner');
+    if (b) b.hidden = true;
+  }
+
   window.addEventListener('DOMContentLoaded', () => {
-    const hash = window.location.hash.replace('#','');
-    if (hash) {
-      const [pageId, sectionId] = hash.split('/');
-      if (pages.includes(pageId)) goPage(pageId, sectionId);
+    if (window.location.hash) routeFromHash();
+    let saved = null;
+    try { saved = localStorage.getItem('pbal-consent'); } catch (e) {}
+    if (saved !== 'granted' && saved !== 'denied') {
+      const b = document.getElementById('cookie-banner');
+      if (b) b.hidden = false;
     }
     invSections.forEach(id => {
       const el = document.getElementById(id);
@@ -1614,9 +1727,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
   });
 
-  window.addEventListener('popstate', (e) => {
-    if (e.state && e.state.pageId) goPage(e.state.pageId, e.state.sectionId);
-  });
+  window.addEventListener('popstate', routeFromHash);
 </script>
 </body>
 </html>
