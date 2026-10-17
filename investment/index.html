@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Consent defaults (analytics cookies off until visitor accepts) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    var pbalConsent = null;
+    try { pbalConsent = localStorage.getItem('pbal-consent'); } catch (e) {}
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: pbalConsent === 'granted' ? 'granted' : 'denied',
+      wait_for_update: 500
+    });
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2ZHEXMDG0L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-2ZHEXMDG0L');
+  </script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-M4LD8TTQ');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Investment &amp; Pricing | Photos by Alexandra Lynn</title>
+  <meta name="description" content="Photography pricing in the Tri-Cities, WA: weddings from $1,200, portrait and family sessions from $125. See what is included and how booking works."/>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2315232B'/><text x='16' y='23' font-family='serif' font-size='20' font-weight='bold' fill='%23F7F5F1' text-anchor='middle'>A</text></svg>"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Investment &amp; Pricing | Photos by Alexandra Lynn"/>
+  <meta property="og:description" content="Photography pricing in the Tri-Cities, WA: weddings from $1,200, portrait and family sessions from $125. See what is included and how booking works."/>
+  <meta property="og:url" content="https://photosbyalexandralynn.com/investment/"/>
+  <link rel="canonical" href="https://photosbyalexandralynn.com/investment/"/>
+  <meta property="og:image" content="https://photosbyalexandralynn.com/og-image.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:alt" content="Photos by Alexandra Lynn"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image" content="https://photosbyalexandralynn.com/og-image.png"/>
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/assets/site.css"/>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4LD8TTQ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<a class="skip-link" href="#main">Skip to main content</a>
+<nav id="site-nav" class="solid" aria-label="Main">
+  <a class="nav-logo" href="/">Photos by Alexandra Lynn</a>
+  <ul class="nav-links">
+    <li><a href="/"  data-page="home">Home</a></li>
+    <li><a href="/services/"  data-page="services">Services</a></li>
+    <li><a href="/galleries/"  data-page="galleries">Galleries</a></li>
+    <li><a href="/about/"  data-page="about">About</a></li>
+    <li><a href="/investment/" data-page="investment" class="active-page" aria-current="page">Investment</a></li>
+  </ul>
+  <a class="nav-cta btn" href="/contact/">Get in Touch</a>
+  <button class="nav-ham" id="nav-ham" onclick="toggleMobileNav()" aria-label="Menu" aria-expanded="false" aria-controls="nav-mobile">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile">
+  <a href="/">Home</a>
+  <a href="/services/">Services</a>
+  <a href="/galleries/">Galleries</a>
+  <a href="/about/">About</a>
+  <a href="/investment/" aria-current="page">Investment</a>
+  <a class="nav-mob-cta" href="/contact/">Get in Touch</a>
+</div>
+
+<main id="main" tabindex="-1">
+<div id="page-investment" class="page active">
+
+  <div class="page-header">
+    <span class="eyebrow">transparent pricing</span>
+    <h1 class="section-title">Investment</h1>
+    <p class="price-note">Prices don't include sales tax, which is added to each invoice where applicable. A 25% retainer holds your date.</p>
+  </div>
+
+  <nav class="inv-nav" id="inv-nav" aria-label="Pricing sections">
+    <button type="button" class="inv-nav-item active" data-section="inv-weddings" onclick="scrollInv('inv-weddings',this)">Weddings</button>
+    <button type="button" class="inv-nav-item" data-section="inv-seniors" onclick="scrollInv('inv-seniors',this)">Portraits</button>
+    <button type="button" class="inv-nav-item" data-section="inv-family" onclick="scrollInv('inv-family',this)">Family &amp; Maternity</button>
+  </nav>
+
+  <!-- Weddings -->
+  <div id="inv-weddings" class="inv-section">
+    <div class="inv-inner">
+      <div class="inv-section-header">
+        <span class="eyebrow">01</span>
+        <h2 class="section-title">Weddings &amp; <em>Engagements</em></h2>
+        <p class="inv-section-desc">All wedding packages include a complimentary pre-wedding consultation, a detailed shot list, and full ceremony + reception coverage. Engagement sessions are included in Classic and Full Day packages.</p>
+      </div>
+      <div class="inv-packages">
+        <div class="inv-pkg">
+          <div class="inv-pkg-name">Elopement</div>
+          <div class="inv-pkg-price">$1,200</div>
+          <div class="inv-pkg-note">Up to 4 hours</div>
+          <ul>
+            <li>Intimate ceremony coverage</li>
+            <li>Fully edited images</li>
+            <li>Private online gallery with downloads</li>
+            <li>Travel within 50 mi included</li>
+            <li>Print-ready files</li>
+          </ul>
+        </div>
+        <div class="inv-pkg featured">
+          <div class="inv-pkg-badge">Most popular</div>
+          <div class="inv-pkg-name">Classic Wedding</div>
+          <div class="inv-pkg-price">$1,800</div>
+          <div class="inv-pkg-note">Up to 8 hours</div>
+          <ul>
+            <li>Engagement session included</li>
+            <li>Getting ready through first dances</li>
+            <li>Fully edited images</li>
+            <li>Private gallery with downloads</li>
+            <li>Print-ready files</li>
+          </ul>
+        </div>
+        <div class="inv-pkg">
+          <div class="inv-pkg-name">Full Day</div>
+          <div class="inv-pkg-price">$2,400</div>
+          <div class="inv-pkg-note">Up to 12 hours</div>
+          <ul>
+            <li>Engagement session included</li>
+            <li>Morning prep to final send-off</li>
+            <li>Fully edited images</li>
+            <li>Private gallery with downloads</li>
+            <li>Print-ready files</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top:2rem;">
+        <p style="font-size:.82rem;color:var(--light);">Custom quotes available for destination weddings. Travel within 50 miles always included.</p>
+      </div>
+      <div style="margin-top:1.5rem;">
+        <a class="btn btn-outline" href="/contact/">Inquire About Your Date</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seniors & Portraits -->
+  <div id="inv-seniors" class="inv-section">
+    <div class="inv-inner">
+      <div class="inv-section-header">
+        <span class="eyebrow">02</span>
+        <h2 class="section-title"><em>Portraits</em></h2>
+        <p class="inv-section-desc">Seniors, couples, individuals — every portrait session is tailored to you. We'll talk through style, location, and what you want to feel when you look at your photos.</p>
+      </div>
+      <div class="inv-packages">
+        <div class="inv-pkg">
+          <div class="inv-pkg-name">Mini Session</div>
+          <div class="inv-pkg-price">$125</div>
+          <div class="inv-pkg-note">30 minutes · 1 location</div>
+          <ul>
+            <li>Fully edited images</li>
+            <li>1 outfit</li>
+            <li>Private gallery with downloads</li>
+          </ul>
+        </div>
+        <div class="inv-pkg featured">
+          <div class="inv-pkg-badge">Most popular</div>
+          <div class="inv-pkg-name">Standard Session</div>
+          <div class="inv-pkg-price">$225</div>
+          <div class="inv-pkg-note">1 hour · 1–2 locations</div>
+          <ul>
+            <li>Fully edited images</li>
+            <li>2 outfit changes</li>
+            <li>Private gallery with downloads</li>
+            <li>Print-ready files</li>
+          </ul>
+        </div>
+        <div class="inv-pkg">
+          <div class="inv-pkg-name">Extended Session</div>
+          <div class="inv-pkg-price">$325</div>
+          <div class="inv-pkg-note">90 min – 2 hours · up to 3 locations</div>
+          <ul>
+            <li>Fully edited images</li>
+            <li>Multiple outfit changes</li>
+            <li>Private gallery with downloads</li>
+            <li>Print-ready files</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top:1.5rem;">
+        <a class="btn btn-outline" href="/contact/">Book a Portrait Session</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Family & Maternity -->
+  <div id="inv-family" class="inv-section">
+    <div class="inv-inner">
+      <div class="inv-section-header">
+        <span class="eyebrow">03</span>
+        <h2 class="section-title">Family &amp; <em>Maternity</em></h2>
+        <p class="inv-section-desc">Family sessions are relaxed and fun — I come prepared to work with kids of all ages. Maternity sessions are available as standalone bookings or alongside a family session.</p>
+      </div>
+      <div class="inv-packages">
+        <div class="inv-pkg">
+          <div class="inv-pkg-name">Mini Session</div>
+          <div class="inv-pkg-price">$125</div>
+          <div class="inv-pkg-note">30 minutes</div>
+          <ul>
+            <li>Fully edited images</li>
+            <li>Up to 5 family members</li>
+            <li>Private gallery with downloads</li>
+          </ul>
+        </div>
+        <div class="inv-pkg featured">
+          <div class="inv-pkg-badge">Most popular</div>
+          <div class="inv-pkg-name">Standard Session</div>
+          <div class="inv-pkg-price">$225</div>
+          <div class="inv-pkg-note">1 hour</div>
+          <ul>
+            <li>Fully edited images</li>
+            <li>Mix of candid and posed</li>
+            <li>Private gallery with downloads</li>
+            <li>Up to 8 family members</li>
+          </ul>
+        </div>
+        <div class="inv-pkg">
+          <div class="inv-pkg-name">Extended Session</div>
+          <div class="inv-pkg-price">$325</div>
+          <div class="inv-pkg-note">90 minutes</div>
+          <ul>
+            <li>Fully edited images</li>
+            <li>Multiple locations or setups</li>
+            <li>Perfect for larger families</li>
+            <li>Private gallery with downloads</li>
+          </ul>
+        </div>
+        <div class="inv-pkg">
+          <div class="inv-pkg-name">Maternity Session</div>
+          <div class="inv-pkg-price">$225</div>
+          <div class="inv-pkg-note">1 hour · solo or with partner/family</div>
+          <ul>
+            <li>Fully edited images</li>
+            <li>Outdoor or curated indoor settings</li>
+            <li>Private gallery with downloads</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top:1.5rem;">
+        <a class="btn btn-outline" href="/contact/">Book a Family Session</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="inv-faq">
+    <h3 class="inv-faq-title">FAQ</h3>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">How do I book? <span class="faq-arrow">&#8964;</span></button>
+      <div class="faq-body"><p class="faq-a">Fill out the contact form or send me an email. Once we align on details, I send a contract and invoice for a 25% retainer to hold your date. Your date isn't reserved until both are signed and received.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">What's your payment policy? <span class="faq-arrow">&#8964;</span></button>
+      <div class="faq-body"><p class="faq-a">A 25% retainer is due at booking. The remaining balance is due 2 weeks before your session or event date. I accept credit/debit cards and bank transfer, processed securely through Pixieset. Sales tax is added to each invoice where applicable.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Is the retainer refundable? <span class="faq-arrow">&#8964;</span></button>
+      <div class="faq-body"><p class="faq-a">The retainer reserves your date, so it is non-refundable once paid. If I'm ever unable to photograph your session and can't offer a replacement or a new date, you'll be refunded what you've paid for that session. Cancellation terms depend on your session type and timing, and are set out in your contract.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">When will I receive my photos? <span class="faq-arrow">&#8964;</span></button>
+      <div class="faq-body"><p class="faq-a">Portrait, family, and maternity sessions: approximately 4 weeks. Weddings: approximately 8 weeks. Rush delivery may be available — just ask when you inquire.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Do you travel outside Tri-Cities? <span class="faq-arrow">&#8964;</span></button>
+      <div class="faq-body"><p class="faq-a">Yes — I'm available to travel anywhere. Travel within 50 miles of Tri-Cities is always included. Beyond that, travel costs are added to the package at cost (mileage, lodging if required, flights for destination sessions).</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">What if I need to reschedule? <span class="faq-arrow">&#8964;</span></button>
+      <div class="faq-body"><p class="faq-a">Life happens. Rescheduling requests made more than 2 weeks before your session date are accommodated at no charge (subject to availability). Please refer to your contract for full details.</p></div>
+    </div>
+  </div>
+
+</div><!-- /page-investment -->
+</main>
+
+<footer id="site-footer">
+  <!-- Instagram grid preview -->
+  <div class="footer-ig">
+    <div class="footer-ig-cell">
+      <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Instagram</span></div>
+      <div class="footer-ig-overlay"><span class="footer-ig-label">@photosbyalexandralynn</span></div>
+    </div>
+    <div class="footer-ig-cell">
+      <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Instagram</span></div>
+      <div class="footer-ig-overlay"><span class="footer-ig-label">@photosbyalexandralynn</span></div>
+    </div>
+    <div class="footer-ig-cell">
+      <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Instagram</span></div>
+      <div class="footer-ig-overlay"><span class="footer-ig-label">@photosbyalexandralynn</span></div>
+    </div>
+    <div class="footer-ig-cell">
+      <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Instagram</span></div>
+      <div class="footer-ig-overlay"><span class="footer-ig-label">@photosbyalexandralynn</span></div>
+    </div>
+    <div class="footer-ig-cell">
+      <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Instagram</span></div>
+      <div class="footer-ig-overlay"><span class="footer-ig-label">@photosbyalexandralynn</span></div>
+    </div>
+    <div class="footer-ig-cell">
+      <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Instagram</span></div>
+      <div class="footer-ig-overlay"><span class="footer-ig-label">@photosbyalexandralynn</span></div>
+    </div>
+  </div>
+
+  <div class="footer-main">
+    <a class="footer-logo" href="/"  style="display:block;">Photos by Alexandra Lynn</a>
+    <p class="footer-tag">Tri-Cities, WA · Weddings · Portraits · Family &amp; Maternity · Available to travel anywhere</p>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="/">Home</a>
+      <a href="/services/">Services</a>
+      <a href="/weddings/">Weddings</a>
+      <a href="/portraits/">Portraits</a>
+      <a href="/family/">Family</a>
+      <a href="/galleries/">Galleries</a>
+      <a href="/about/">About</a>
+      <a href="/investment/">Investment</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="footer-social">
+      <a href="https://instagram.com/photosbyalexandralynn" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=61590753842857" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="mailto:photosbyalexandralynn@gmail.com">Email</a>
+      <a href="tel:+15097132671">Call</a>
+    </div>
+    <nav class="footer-nav" aria-label="Legal" style="margin-top:.5rem;font-size:.68rem;">
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="/terms/">Terms of Service</a>
+      <button type="button" onclick="showCookieBanner()">Cookie Settings</button>
+    </nav>
+    <p class="footer-copy">&copy; 2026 Photos by Alexandra Lynn · All rights reserved</p>
+  </div>
+</footer>
+
+<div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie consent" hidden>
+  <p>I use analytics cookies to learn how people use this site. They stay off unless you accept. See the <a href="/privacy/">Privacy Policy</a> for details.</p>
+  <div class="cookie-actions">
+    <button type="button" class="cookie-decline" onclick="setConsent('denied')">Decline</button>
+    <button type="button" class="cookie-accept" onclick="setConsent('granted')">Accept</button>
+  </div>
+</div>
+
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

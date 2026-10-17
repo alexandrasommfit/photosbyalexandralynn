@@ -1,0 +1,67 @@
+<div id="page-galleries" class="page active">
+
+  <div class="page-header">
+    <span class="eyebrow">the work</span>
+    <h1 class="section-title">Galleries</h1>
+  </div>
+
+  <div class="gallery-filter">
+    <button class="gfilter-btn active" aria-pressed="true" onclick="filterGallery('all',this)">All</button>
+    <button class="gfilter-btn" aria-pressed="false" onclick="filterGallery('wedding',this)">Weddings</button>
+    <button class="gfilter-btn" aria-pressed="false" onclick="filterGallery('portrait',this)">Portraits</button>
+    <button class="gfilter-btn" aria-pressed="false" onclick="filterGallery('family',this)">Family &amp; Maternity</button>
+  </div>
+
+  <div class="gallery-grid" id="gallery-grid">
+    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="portrait"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Portrait</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="family"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Family</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="portrait"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Portrait</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="portrait"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Portrait</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="family"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Family</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="family"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Family</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="portrait"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Portrait</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="portrait"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Portrait</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="wedding"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Wedding</span></div><div class="gallery-cell-overlay"></div></div>
+    <div class="gallery-cell" data-cat="family"><div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Family</span></div><div class="gallery-cell-overlay"></div></div>
+  </div>
+
+  <!-- Contact form -->
+  <div class="contact-section">
+    <div class="contact-inner-sm">
+      <p class="contact-pre">love what you see?</p>
+      <h2 class="contact-title-sm">Let's create your gallery</h2>
+      <p class="contact-body-sm">Tell me about your session and I'll be in touch within 24–48 hours.</p>
+      <form class="cform" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="submitForm(event,this)">
+        <input type="hidden" name="form-name" value="contact"/>
+        <div class="crow">
+          <div class="cfield"><label>First Name<input type="text" name="first_name" required/></label></div>
+          <div class="cfield"><label>Last Name<input type="text" name="last_name" required/></label></div>
+        </div>
+        <div class="cfield"><label>Email Address<input type="email" name="email" required/></label></div>
+        <div class="cfield"><label>Phone (optional)<input type="tel" name="phone"/></label></div>
+        <div class="cfield">
+          <label>What are you looking for?
+          <select name="service">
+            <option value="">Select a service...</option>
+            <option>Wedding / Engagement</option>
+            <option>Portraits</option>
+            <option>Family Session</option>
+            <option>Maternity</option>
+            <option>Not sure yet — let's talk</option>
+          </select></label>
+        </div>
+        <div class="cfield"><label>Approximate Date or Timeframe<input type="text" name="timeframe" placeholder="e.g. September 2027, sometime this fall, ASAP…"/></label></div>
+        <div class="cfield"><label>Tell me about your vision<textarea name="message" placeholder="Share anything — the vibe you're going for, your venue, your family dynamic, what matters most to you. The more I know, the better I can help."></textarea></label></div>
+        <p style="position:absolute;left:-9999px;" aria-hidden="true"><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"/></label></p>
+        <p class="form-consent">By sending this inquiry, you agree that I may contact you about your session and that your information will be handled as described in the <a href="/privacy/">Privacy Policy</a>.</p>
+        <button type="submit" class="csub">Send My Inquiry</button>
+      </form>
+    </div>
+  </div>
+
+</div><!-- /page-galleries -->
