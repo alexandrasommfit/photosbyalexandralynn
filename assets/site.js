@@ -11,14 +11,65 @@
 })();
 
 // Mobile nav
-function toggleMobileNav() {
+function setMobileNav(open) {
   var ham = document.getElementById('nav-ham');
   var mob = document.getElementById('nav-mobile');
-  ham.classList.toggle('open');
-  mob.classList.toggle('open');
-  ham.setAttribute('aria-expanded', mob.classList.contains('open') ? 'true' : 'false');
-  document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
+  if (!ham || !mob) return;
+  ham.classList.toggle('open', open);
+  mob.classList.toggle('open', open);
+  ham.setAttribute('aria-expanded', open ? 'true' : 'false');
+  ham.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
+  document.body.style.overflow = open ? 'hidden' : '';
+  document.body.classList.toggle('nav-open', open);
 }
+
+function toggleMobileNav() {
+  var mob = document.getElementById('nav-mobile');
+  if (!mob) return;
+  var open = !mob.classList.contains('open');
+  setMobileNav(open);
+  if (open) {
+    var first = mob.querySelector('a');
+    if (first) first.focus();
+  }
+}
+
+function closeMobileNav() {
+  var ham = document.getElementById('nav-ham');
+  var mob = document.getElementById('nav-mobile');
+  if (!mob || !mob.classList.contains('open')) return;
+  setMobileNav(false);
+  if (ham) ham.focus();
+}
+
+function mobileNavItems() {
+  var ham = document.getElementById('nav-ham');
+  var mob = document.getElementById('nav-mobile');
+  var links = mob ? Array.prototype.slice.call(mob.querySelectorAll('a')) : [];
+  return [ham].concat(links).filter(function (el) { return el && !el.hidden; });
+}
+
+document.addEventListener('keydown', function (e) {
+  var mob = document.getElementById('nav-mobile');
+  if (!mob || !mob.classList.contains('open')) return;
+  if (e.key === 'Escape') {
+    e.preventDefault();
+    closeMobileNav();
+    return;
+  }
+  if (e.key !== 'Tab') return;
+  var items = mobileNavItems();
+  if (!items.length) return;
+  var first = items[0];
+  var last = items[items.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
+});
 
 // Investment sticky nav + scroll spy
 function scrollInv(id, el) {
