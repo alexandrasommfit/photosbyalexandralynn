@@ -588,3 +588,6 @@
     .home-hero-img img { position: absolute; inset: 0; object-position: 50% 78%; }
     .work-cell img, .hs-card-img img, .service-block-photo img, .gallery-cell img, .footer-ig-cell img { object-position: 50% 30%; }
     .home-hero-img picture { position: absolute; inset: 0; display: block; }
+    .hs-grid { grid-template-columns: repeat(5, 1fr); }
+    @media (max-width: 1200px) { .hs-grid { grid-template-columns: repeat(2, 1fr); } .hs-grid .hs-card:last-child:nth-child(odd) { grid-column: 1 / -1; } }
+    @media (max-width: 768px) { .hs-grid { grid-template-columns: 1fr; } .hs-grid .hs-card:last-child:nth-child(odd) { grid-column: auto; } }

@@ -16,10 +16,16 @@ Static site on Netlify, deployed from `main` on GitHub (alexandrasommfit/photosb
 - Never invent testimonials, photo counts, prices or policies. Policies come from the signed contract templates in Drive.
 
 ## Policies that must stay consistent (site, contracts, invoice, emails)
-- 25% retainer, non-refundable once paid (exceptions per contract). Balance due 2 weeks before the session. Payments through Pixieset. Sales tax added to invoices.
+- 25% retainer, non-refundable once paid (exceptions per contract). Balance due 2 weeks before the session. Payments through Found (Pixieset is only the gallery platform). Sales tax added to invoices.
 - Travel within 50 miles of Tri-Cities included.
 - Analytics (Google Analytics G-2ZHEXMDG0L) loads through Google Tag Manager (GTM-M4LD8TTQ) and stays off until the visitor accepts the cookie banner (consent defaults are set in `src/partials/head.html`). Keep the Privacy Policy in sync with any tracking change.
 - Wedding coverage hours are Elopement 4, Classic 6, Full Day 8. Edited-image counts per package are approximate and must be re-checked if hours change.
+
+## Service categories and site decisions (from Alexandra)
+- Categories: Weddings & Engagements, Portraits (seniors, couples, individuals), Family & Maternity, Business & Commercial, and "Minis, Events & More" (seasonal minis, brand & lifestyle, events, boudoir; no public prices). Do NOT offer professional headshots (no studio or lighting setup). Commercial has no public prices: projects are quoted individually (there is no commercial pricing in Notion). New categories need a card on the home and services pages, a page in `src/pages/`, an entry in `PAGES` in `build.py`, the contact form dropdown, the Investment page, and the footer.
+- The FAQ lives only on `/faq/`. Do not add a "Is the retainer refundable?" question: Alexandra does not want it. The Terms page keeps the retainer policy.
+- The website says the gallery stays online 90 days. Do not mention the 12-month image backup on the site (it stays in the contracts).
+- Rescheduling: portrait, family and commercial requests more than 2 weeks out are accommodated based on availability; weddings are harder to move because dates book far ahead.
 
 ## Photos
 - Portfolio photos are listed in `src/photos.json` (id, category wedding/portrait/family, alt text). Web-sized copies live in `assets/photos/`.

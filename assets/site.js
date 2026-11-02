@@ -87,7 +87,7 @@ function scrollInv(id, el) {
       navItems.forEach(function (item) { item.classList.toggle('active', item.dataset.section === entry.target.id); });
     });
   }, { rootMargin: '-10% 0px -60% 0px', threshold: 0 });
-  ['inv-weddings', 'inv-seniors', 'inv-family'].forEach(function (id) {
+  ['inv-weddings', 'inv-seniors', 'inv-family', 'inv-commercial'].forEach(function (id) {
     var el = document.getElementById(id);
     if (el) observer.observe(el);
   });
