@@ -2,10 +2,10 @@
 
   <!-- Hero -->
   <section id="home-hero">
-    <div class="home-hero-img"></div>
+    <div class="home-hero-img">{{hero:autumn-10|autumn-11}}</div>
     <div class="home-hero-content">
       <p class="home-hero-pre">Tri-Cities, WA · Available to travel anywhere</p>
-      <h1 class="home-hero-name">Alexandra<br>Lynn<span class="sr-only"> | Tri-Cities Wedding &amp; Portrait Photographer</span></h1>
+      <h1 class="home-hero-name">Alexandra Lynn<span class="sr-only"> | Tri-Cities Wedding &amp; Portrait Photographer</span></h1>
       <p class="home-hero-sub">Wedding & Portrait Photographer</p>
       <div class="home-hero-ctas">
         <a class="btn btn-fill" href="/contact/">Book Your Session</a>
@@ -30,19 +30,19 @@
   <section id="home-work">
     <div class="work-grid">
       <div class="work-cell tall">
-        <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Wedding photography</span></div>
+        {{photo:autumn-08|(min-width:900px) 25vw, 50vw}}
       </div>
       <div class="work-cell">
-        <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Portrait</span></div>
+        {{photo:autumn-02|(min-width:900px) 25vw, 50vw}}
       </div>
       <div class="work-cell">
-        <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Couple</span></div>
+        {{photo:autumn-12|(min-width:900px) 25vw, 50vw}}
       </div>
       <div class="work-cell">
-        <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Family</span></div>
+        {{photo:autumn-06|(min-width:900px) 25vw, 50vw}}
       </div>
       <div class="work-cell">
-        <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Wedding detail</span></div>
+        {{photo:autumn-13|(min-width:900px) 25vw, 50vw}}
       </div>
     </div>
     <div class="work-cta">
@@ -61,7 +61,7 @@
       <div class="hs-grid">
         <a class="hs-card" href="/weddings/">
           <div class="hs-card-img">
-            <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Weddings</span></div>
+            {{photo:autumn-09|(min-width:900px) 33vw, 100vw}}
           </div>
           <div class="hs-card-overlay">
             <div class="hs-card-name">Weddings &amp;<br>Engagements</div>
@@ -70,7 +70,7 @@
         </a>
         <a class="hs-card" href="/portraits/">
           <div class="hs-card-img">
-            <div class="photo-ph" aria-hidden="true"><span class="photo-ph-label">Portraits</span></div>
+            {{photo:autumn-01|(min-width:900px) 33vw, 100vw}}
           </div>
           <div class="hs-card-overlay">
             <div class="hs-card-name">Seniors, Couples<br>&amp; Portraits</div>

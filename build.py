@@ -5,6 +5,7 @@ Edit content in src/pages/*.html (page bodies) and src/partials/*.html (head, na
 styles in assets/site.css, behavior in assets/site.js, then run:  python3 build.py
 """
 import datetime
+import json
 import os
 import re
 
@@ -51,6 +52,59 @@ PAGES = {
 NAV_URLS = {'home': '/', 'services': '/services/', 'galleries': '/galleries/', 'about': '/about/', 'investment': '/investment/'}
 
 
+PHOTOS = {}
+PHOTO_ORDER = []
+CATEGORIES = [('wedding', 'Weddings'), ('portrait', 'Portraits'), ('family', 'Family &amp; Maternity')]
+
+
+def load_photos():
+    with open(os.path.join(ROOT, 'src/photos.json'), encoding='utf-8') as f:
+        for p in json.load(f)['photos']:
+            PHOTOS[p['id']] = p
+            PHOTO_ORDER.append(p['id'])
+
+
+def img_tag(pid, sizes, eager=False):
+    p = PHOTOS[pid]
+    ws = p['widths']
+    srcset = ', '.join('/assets/photos/%s-%d.jpg %dw' % (pid, w, w) for w in ws)
+    src = '/assets/photos/%s-%d.jpg' % (pid, ws[len(ws) // 2])
+    load = 'fetchpriority="high"' if eager else 'loading="lazy" decoding="async"'
+    return '<img src="%s" srcset="%s" sizes="%s" width="%d" height="%d" alt="%s" %s>' % (
+        src, srcset, sizes, p['w'], p['h'], esc(p['alt']), load)
+
+
+def hero_html(desktop, mobile):
+    m = PHOTOS[mobile]
+    msrc = ', '.join('/assets/photos/%s-%d.jpg %dw' % (mobile, w, w) for w in m['widths'])
+    return '<picture><source media="(max-width: 768px)" srcset="%s" sizes="100vw">%s</picture>' % (msrc, img_tag(desktop, '100vw', True))
+
+
+def gallery_html():
+    present = [(k, label) for k, label in CATEGORIES if any(PHOTOS[i]['category'] == k for i in PHOTO_ORDER)]
+    out = ''
+    if len(present) > 1:
+        out += '<div class="gallery-filter">\n    <button class="gfilter-btn active" aria-pressed="true" onclick="filterGallery(\'all\',this)">All</button>\n'
+        for k, label in present:
+            out += '    <button class="gfilter-btn" aria-pressed="false" onclick="filterGallery(\'%s\',this)">%s</button>\n' % (k, label)
+        out += '  </div>\n\n  '
+    out += '<div class="gallery-grid" id="gallery-grid">\n'
+    for pid in PHOTO_ORDER:
+        out += '    <div class="gallery-cell" data-cat="%s">%s<div class="gallery-cell-overlay"></div></div>\n' % (
+            PHOTOS[pid]['category'], img_tag(pid, '(min-width:900px) 33vw, 50vw'))
+    return out + '  </div>\n'
+
+
+def render_tags(html):
+    html = html.replace('{{gallery}}', gallery_html())
+    html = re.sub(r'\{\{hero:([\w-]+)\|([\w-]+)\}\}', lambda m: hero_html(m.group(1), m.group(2)), html)
+    html = re.sub(r'\{\{photo:([\w-]+)\|([^|}]*)(\|eager)?\}\}',
+                  lambda m: img_tag(m.group(1), m.group(2), bool(m.group(3))), html)
+    if '{{' in html:
+        raise SystemExit('Unrendered tag: ' + html[html.index('{{'):html.index('{{') + 60])
+    return html
+
+
 def read(path):
     with open(os.path.join(ROOT, path), encoding='utf-8') as f:
         return f.read()
@@ -77,13 +131,13 @@ def build_page(slug, meta):
     head = (head.replace('{{title}}', esc(meta['title'])).replace('{{desc}}', esc(meta['desc']))
                 .replace('{{url}}', url)
                 .replace('{{jsonld}}', read('src/partials/jsonld-home.html') if slug == '' else ''))
-    body = read('src/pages/%s.html' % meta['file'])
+    body = render_tags(read('src/pages/%s.html' % meta['file']))
     nav = build_nav(read('src/partials/nav.html'), meta['nav'], slug == '')
     skip = '<a class="skip-link" href="#main">Skip to main content</a>\n'
     html = ('<!DOCTYPE html>\n<html lang="en">\n<head>\n' + head + '</head>\n<body>\n'
             + read('src/partials/gtm-noscript.html') + skip + nav
             + '\n<main id="main" tabindex="-1">\n' + body + '</main>\n\n'
-            + read('src/partials/footer.html') + '\n' + read('src/partials/banner.html')
+            + render_tags(read('src/partials/footer.html')) + '\n' + read('src/partials/banner.html')
             + '\n<script src="/assets/site.js" defer></script>\n</body>\n</html>\n')
     out = os.path.join(ROOT, slug, 'index.html') if slug else os.path.join(ROOT, 'index.html')
     os.makedirs(os.path.dirname(out), exist_ok=True)
@@ -100,6 +154,7 @@ def build_sitemap(urls):
 
 
 if __name__ == '__main__':
+    load_photos()
     urls = [build_page(slug, meta) for slug, meta in PAGES.items()]
     build_sitemap(urls)
     print('Built %d pages + sitemap.xml' % len(urls))

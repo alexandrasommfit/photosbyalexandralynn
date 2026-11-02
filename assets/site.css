@@ -254,7 +254,7 @@
     /* Hero */
     #home-hero {
       position: relative; height: 100vh; min-height: 640px;
-      display: flex; align-items: center; justify-content: center; overflow: hidden;
+      display: flex; align-items: flex-end; justify-content: center; overflow: hidden;
     }
     .home-hero-img {
       position: absolute; inset: 0;
@@ -262,19 +262,19 @@
     }
     .home-hero-img::after {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(160deg, rgba(21,35,43,.18) 0%, rgba(21,35,43,.52) 100%);
+      background: linear-gradient(to bottom, rgba(21,35,43,.5) 0%, rgba(21,35,43,0) 20%), linear-gradient(to top, rgba(21,35,43,.78) 0%, rgba(21,35,43,.42) 45%, rgba(21,35,43,.1) 100%);
     }
     .home-hero-content {
-      position: relative; z-index: 2; text-align: center; padding: 0 1.5rem;
+      position: relative; z-index: 2; text-align: center; padding: 0 1.5rem 6rem;
       max-width: 900px;
     }
     .home-hero-pre {
       font-size: .62rem; letter-spacing: .32em; text-transform: uppercase;
-      color: rgba(255,255,255,.65); margin-bottom: 1.2rem;
+      color: rgba(255,255,255,.9); margin-bottom: 1rem;
     }
     .home-hero-name {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(3.8rem, 10vw, 8rem);
+      font-size: clamp(3.2rem, 7.2vw, 6.2rem);
       font-weight: 800; color: white; line-height: .92; letter-spacing: .01em; margin-bottom: .8rem;
     }
     .home-hero-sub {
@@ -578,3 +578,8 @@
     .svc-more-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: .8rem; }
     .svc-more-links a { font-size: .64rem; letter-spacing: .16em; text-transform: uppercase; color: var(--navy); text-decoration: underline; text-decoration-color: var(--blue); text-underline-offset: .4em; }
     .svc-lead { max-width: 640px; margin: 0 auto 3rem; padding: 0 2rem; text-align: center; color: var(--body); font-size: .95rem; line-height: 1.9; }
+
+    /* ─── PHOTOS ─────────────────────────────────────────────── */
+    .home-hero-img img { position: absolute; inset: 0; object-position: 50% 78%; }
+    .work-cell img, .hs-card-img img, .service-block-photo img, .gallery-cell img, .footer-ig-cell img { object-position: 50% 30%; }
+    .home-hero-img picture { position: absolute; inset: 0; display: block; }

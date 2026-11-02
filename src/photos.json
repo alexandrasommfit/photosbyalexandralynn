@@ -1,0 +1,172 @@
+{
+  "photos": [
+    {
+      "id": "autumn-01",
+      "category": "portrait",
+      "alt": "Couple smiling and embracing in a golden autumn field",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1670
+    },
+    {
+      "id": "autumn-02",
+      "category": "portrait",
+      "alt": "Couple laughing together against a weathered log with yellow fall leaves behind them",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1864
+    },
+    {
+      "id": "autumn-03",
+      "category": "portrait",
+      "alt": "Couple in a playful dip beside a river in autumn",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1674
+    },
+    {
+      "id": "autumn-04",
+      "category": "portrait",
+      "alt": "Couple sharing a close, smiling moment under golden autumn trees",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1708
+    },
+    {
+      "id": "autumn-05",
+      "category": "portrait",
+      "alt": "Couple laughing together, her hand in her hair, with fall foliage behind them",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1697
+    },
+    {
+      "id": "autumn-06",
+      "category": "portrait",
+      "alt": "Couple lying in tall golden grass, nose to nose and smiling",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1723
+    },
+    {
+      "id": "autumn-07",
+      "category": "portrait",
+      "alt": "Close-up of a couple laughing together in dry autumn grass",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1697
+    },
+    {
+      "id": "autumn-08",
+      "category": "portrait",
+      "alt": "Couple standing arm in arm in a meadow at sunset",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1671
+    },
+    {
+      "id": "autumn-09",
+      "category": "portrait",
+      "alt": "Woman resting her hand on her partner's shoulder under a soft evening sky",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1616
+    },
+    {
+      "id": "autumn-10",
+      "category": "portrait",
+      "alt": "Couple smiling at each other beside a river at dusk",
+      "widths": [
+        1200,
+        1920,
+        2560
+      ],
+      "w": 2560,
+      "h": 1707
+    },
+    {
+      "id": "autumn-11",
+      "category": "portrait",
+      "alt": "Couple leaning their heads together under a cloudy blue sky",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1717
+    },
+    {
+      "id": "autumn-12",
+      "category": "portrait",
+      "alt": "Couple laughing and embracing in a field at sunset",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1575
+    },
+    {
+      "id": "autumn-13",
+      "category": "portrait",
+      "alt": "Couple embracing in front of a log with golden leaves and sunset light",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1800
+    },
+    {
+      "id": "autumn-14",
+      "category": "portrait",
+      "alt": "Couple seated close together against yellow autumn foliage",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1592
+    }
+  ]
+}

@@ -20,5 +20,12 @@ Static site on Netlify, deployed from `main` on GitHub (alexandrasommfit/photosb
 - Travel within 50 miles of Tri-Cities included.
 - Analytics (Google Analytics G-2ZHEXMDG0L) stays off until the visitor accepts the cookie banner. Keep the Privacy Policy in sync with any tracking change.
 
+## Photos
+- Portfolio photos are listed in `src/photos.json` (id, category wedding/portrait/family, alt text). Web-sized copies live in `assets/photos/`.
+- To add photos: add entries to `src/photos.json`, put each original's path in `tools/sources.local.json` (git-ignored, never published), run `python3 tools/photos.py`, then `python3 build.py`. Use neutral ids (like `autumn-01`) and never put client names in filenames, alt text, or any committed file: this repo is public.
+- Alt text describes what is in the photo (people, setting, moment). No client names, no guessed locations.
+- Only publish photos of clients whose contract does not have the "do not use publicly" box checked. Confirm with Alexandra before publishing a new client's photos.
+- Placements: the hero uses `{{hero:desktop-id|mobile-id}}`; other spots use `{{photo:id|sizes}}` in `src/pages/*.html` and `src/partials/footer.html`; `{{gallery}}` builds the Galleries grid and shows the category filter once more than one category has photos. Remaining gray placeholder boxes mark spots still waiting for photos.
+
 ## Accessibility
 - Keep one h1 per page, real links and buttons (no clickable divs or spans), visible focus, and alt text on every photo once real photos replace the gray placeholders.
