@@ -22,6 +22,26 @@ def sips_dims(path):
     return vals['pixelWidth'], vals['pixelHeight']
 
 
+def detect_faces(paths):
+    """Runs Apple Vision face detection (macOS). Returns {filename: [[x, y, w, h], ...]} or {}."""
+    try:
+        r = subprocess.run(['swift', os.path.join(ROOT, 'tools', 'faces.swift')] + paths, capture_output=True, text=True, timeout=600)
+        return json.loads(r.stdout) if r.returncode == 0 and r.stdout.strip() else {}
+    except (OSError, ValueError, subprocess.TimeoutExpired):
+        return {}
+
+
+def focus_from_faces(boxes):
+    """Face area plus room for hair and ears, as [x0, y0, x1, y1] (0-1, from the top-left)."""
+    x0 = y0 = 1.0
+    x1 = y1 = 0.0
+    for x, y, w, h in boxes:
+        x0, x1 = min(x0, x - 0.35 * w), max(x1, x + 1.35 * w)
+        y0, y1 = min(y0, y - 0.8 * h), max(y1, y + 1.15 * h)
+    clamp = lambda v: round(max(0.0, min(1.0, v)), 3)
+    return [clamp(x0), clamp(y0), clamp(x1), clamp(y1)]
+
+
 def main():
     manifest = json.load(open(MANIFEST))
     sources = json.load(open(SOURCES)) if os.path.exists(SOURCES) else {}
@@ -41,6 +61,14 @@ def main():
         p['widths'] = widths
         p['w'], p['h'] = widths[-1], round(oh * widths[-1] / ow)
         print('%-10s %dx%d  -> %s' % (p['id'], p['w'], p['h'], widths))
+    # Where the faces are, so crops never cut them off (a "focus_manual" entry overrides detection)
+    biggest = {p['id']: os.path.join(OUT, '%s-%d.jpg' % (p['id'], p['widths'][-1])) for p in manifest['photos'] if p.get('widths')}
+    found = detect_faces(list(biggest.values()))
+    for p in manifest['photos']:
+        if p.get('focus_manual'):
+            p['focus'] = p['focus_manual']
+        elif p['id'] in biggest and os.path.basename(biggest[p['id']]) in found:
+            p['focus'] = focus_from_faces(found[os.path.basename(biggest[p['id']])])
     json.dump(manifest, open(MANIFEST, 'w'), indent=2, ensure_ascii=False)
     open(MANIFEST, 'a').write('\n')
 

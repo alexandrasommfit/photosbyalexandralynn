@@ -73,20 +73,53 @@ def load_photos():
             PHOTO_ORDER.append(p['id'])
 
 
-def img_tag(pid, sizes, eager=False):
+# Narrowest and widest shape (width / height) each kind of photo slot takes across screen sizes.
+CTX_ASPECTS = {
+    'square': (1.0, 1.0),
+    'work': (0.55, 1.5),
+    'card': (0.5, 1.3),
+    'block': (0.6, 1.6),
+    'hero-d': (1.0, 3.6),
+    'hero-m': (0.4, 1.0),
+}
+
+
+def axis_position(f0, f1, v, bias=0.5):
+    """object-position % that keeps the focus span [f0, f1] inside a window showing fraction v of the image."""
+    if v >= 0.999:
+        return 50.0
+    lo, hi = max((f1 - v) / (1 - v), 0.0), min(f0 / (1 - v), 1.0)
+    if lo > hi:  # focus is bigger than the window: center it as well as possible
+        c = (f0 + f1) / 2
+        return round(max(0.0, min(1.0, (c - v / 2) / (1 - v))) * 100, 1)
+    return round((lo + bias * (hi - lo)) * 100, 1)
+
+
+def object_position(pid, ctx, y_bias=0.5):
+    p = PHOTOS[pid]
+    fx0, fy0, fx1, fy1 = p['focus']
+    a = p['w'] / p['h']
+    amin, amax = CTX_ASPECTS[ctx]
+    vx, vy = min(1.0, amin / a), min(1.0, a / amax)
+    return '%s%% %s%%' % (axis_position(fx0, fx1, vx), axis_position(fy0, fy1, vy, y_bias))
+
+
+def img_tag(pid, sizes, eager=False, ctx='square'):
     p = PHOTOS[pid]
     ws = p['widths']
     srcset = ', '.join('/assets/photos/%s-%d.jpg %dw' % (pid, w, w) for w in ws)
     src = '/assets/photos/%s-%d.jpg' % (pid, ws[len(ws) // 2])
     load = 'fetchpriority="high"' if eager else 'loading="lazy" decoding="async"'
-    return '<img src="%s" srcset="%s" sizes="%s" width="%d" height="%d" alt="%s" %s>' % (
-        src, srcset, sizes, p['w'], p['h'], esc(p['alt']), load)
+    return '<img src="%s" srcset="%s" sizes="%s" width="%d" height="%d" alt="%s" data-ctx="%s" style="object-position:%s" %s>' % (
+        src, srcset, sizes, p['w'], p['h'], esc(p['alt']), ctx, object_position(pid, ctx), load)
 
 
 def hero_html(desktop, mobile):
     m = PHOTOS[mobile]
     msrc = ', '.join('/assets/photos/%s-%d.jpg %dw' % (mobile, w, w) for w in m['widths'])
-    return '<picture><source media="(max-width: 768px)" srcset="%s" sizes="100vw">%s</picture>' % (msrc, img_tag(desktop, '100vw', True))
+    style = '--pos-d:%s;--pos-m:%s' % (object_position(desktop, 'hero-d', 0.8), object_position(mobile, 'hero-m', 0.8))
+    img = img_tag(desktop, '100vw', True, 'hero-d').replace(' style="object-position:%s"' % object_position(desktop, 'hero-d'), '')
+    return '<picture style="%s"><source media="(orientation: portrait)" srcset="%s" sizes="100vw">%s</picture>' % (style, msrc, img)
 
 
 def gallery_html():
@@ -100,15 +133,20 @@ def gallery_html():
     out += '<div class="gallery-grid" id="gallery-grid">\n'
     for pid in PHOTO_ORDER:
         out += '    <div class="gallery-cell" data-cat="%s">%s<div class="gallery-cell-overlay"></div></div>\n' % (
-            PHOTOS[pid]['category'], img_tag(pid, '(min-width:900px) 33vw, 50vw'))
+            PHOTOS[pid]['category'], img_tag(pid, '(min-width:900px) 33vw, 50vw', False, 'square'))
     return out + '  </div>\n'
 
 
 def render_tags(html):
     html = html.replace('{{gallery}}', gallery_html())
     html = re.sub(r'\{\{hero:([\w-]+)\|([\w-]+)\}\}', lambda m: hero_html(m.group(1), m.group(2)), html)
-    html = re.sub(r'\{\{photo:([\w-]+)\|([^|}]*)(\|eager)?\}\}',
-                  lambda m: img_tag(m.group(1), m.group(2), bool(m.group(3))), html)
+    def photo(m):
+        flags = [f for f in m.group(3).split('|') if f]
+        ctx = next((f[4:] for f in flags if f.startswith('ctx=')), None)
+        if ctx not in CTX_ASPECTS:
+            raise SystemExit('Photo tag needs ctx=%s: %s' % ('|'.join(CTX_ASPECTS), m.group(0)))
+        return img_tag(m.group(1), m.group(2), 'eager' in flags, ctx)
+    html = re.sub(r'\{\{photo:([\w-]+)\|([^|}]*)((?:\|[\w=-]+)*)\}\}', photo, html)
     if '{{' in html:
         raise SystemExit('Unrendered tag: ' + html[html.index('{{'):html.index('{{') + 60])
     return html
