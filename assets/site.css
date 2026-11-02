@@ -110,6 +110,11 @@
       flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
     }
     .nav-mobile.open { display: flex; }
+    /* Open sheet sits above the cookie banner; the bar stays above the sheet. */
+    body.nav-open #site-nav { z-index: 460; }
+    body.nav-open .nav-mobile.open { z-index: 450; }
+    body.nav-open #site-nav .nav-logo { color: var(--navy); }
+    body.nav-open #site-nav .nav-ham span { background: var(--navy); }
     .nav-mobile a {
       font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700;
       color: var(--text); cursor: pointer; transition: color .2s;
