@@ -18,7 +18,7 @@ Static site on Netlify, deployed from `main` on GitHub (alexandrasommfit/photosb
 ## Policies that must stay consistent (site, contracts, invoice, emails)
 - 25% retainer, non-refundable once paid (exceptions per contract). Balance due 2 weeks before the session. Payments through Found (Pixieset is only the gallery platform). Sales tax added to invoices.
 - Travel within 50 miles of Tri-Cities included.
-- Analytics (Google Analytics G-2ZHEXMDG0L) loads through Google Tag Manager (GTM-M4LD8TTQ) and stays off until the visitor accepts the cookie banner (consent defaults are set in `src/partials/head.html`). Keep the Privacy Policy in sync with any tracking change.
+- Analytics (Google Analytics G-2ZHEXMDG0L) loads through Google Tag Manager (GTM-M4LD8TTQ) on every page, including the hand-written `404.html`. Consent defaults in `src/partials/head.html` (copied on `404.html`) keep analytics cookies off until the visitor accepts the cookie banner. With Consent Mode v2, the Google tag still sends cookieless pings while consent is denied. Do not change that consent behavior. Keep the Privacy Policy in sync with any tracking change.
 - Wedding coverage hours are Elopement 4, Classic 6, Full Day 8. Edited-image counts per package are approximate and must be re-checked if hours change.
 
 ## Service categories and site decisions (from Alexandra)

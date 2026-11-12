@@ -1,3 +1,104 @@
+// First-touch attribution for the inquiry forms.
+// sessionStorage lasts for this tab only: it survives moves between pages
+// (including the old /#page redirects below, which drop the query string)
+// and clears when the tab closes. A later visit therefore starts clean.
+// localStorage would pin the first campaign onto inquiries from later visits.
+// A cookie would ride on every request and sit beside the analytics consent
+// banner; these values are attached only when someone submits a form.
+var ATTRIBUTION_STORAGE_KEY = 'pbal-attribution';
+var ATTRIBUTION_QUERY_KEYS = [
+  'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
+  'gclid', 'fbclid', 'ttclid', 'msclkid'
+];
+
+function currentPageUrl() {
+  return location.origin + location.pathname + location.search + location.hash;
+}
+
+function readAttribution() {
+  try {
+    var raw = sessionStorage.getItem(ATTRIBUTION_STORAGE_KEY);
+    if (!raw) return null;
+    var data = JSON.parse(raw);
+    return data && typeof data === 'object' ? data : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+function writeAttribution(data) {
+  try { sessionStorage.setItem(ATTRIBUTION_STORAGE_KEY, JSON.stringify(data)); } catch (e) {}
+}
+
+function captureAttribution() {
+  var stored = readAttribution() || {};
+  var started = !!stored.landing_page && Object.prototype.hasOwnProperty.call(stored, 'referrer');
+
+  if (!stored.landing_page) stored.landing_page = currentPageUrl();
+  // Snapshot the original referrer once, even when it is empty (a direct visit).
+  // After an in-site click, document.referrer is this website, not the source.
+  if (!Object.prototype.hasOwnProperty.call(stored, 'referrer')) stored.referrer = document.referrer || '';
+
+  if (!started) {
+    var params = new URLSearchParams(location.search);
+    ATTRIBUTION_QUERY_KEYS.forEach(function (key) {
+      if (stored[key]) return;
+      var incoming = params.get(key);
+      if (incoming == null) return;
+      incoming = String(incoming).replace(/^\s+|\s+$/g, '');
+      if (!incoming) return;
+      stored[key] = incoming;
+    });
+    writeAttribution(stored);
+  }
+  return stored;
+}
+
+function attributionValues() {
+  var stored = captureAttribution() || {};
+  var values = {
+    landing_page: stored.landing_page || currentPageUrl(),
+    page_url: currentPageUrl(),
+    referrer: stored.referrer || ''
+  };
+  ATTRIBUTION_QUERY_KEYS.forEach(function (key) {
+    values[key] = stored[key] || '';
+  });
+  return values;
+}
+
+function fillAttribution(form) {
+  if (!form) return;
+  var values = attributionValues();
+  Object.keys(values).forEach(function (key) {
+    var input = form.querySelector('input[type="hidden"][name="' + key + '"]');
+    if (!input) return;
+    // Never blank a value already captured for this form.
+    if (!values[key] && input.value) return;
+    input.value = values[key];
+  });
+}
+
+function fillAllAttributions() {
+  document.querySelectorAll('form.cform').forEach(fillAttribution);
+}
+
+// Fired only after Netlify accepts the inquiry. Campaign fields only:
+// never send what the visitor typed (name, email, phone, message).
+function pushGenerateLead(form) {
+  var values = attributionValues();
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'generate_lead',
+    form_name: (form && form.getAttribute('name')) || '',
+    utm_source: values.utm_source || '',
+    utm_medium: values.utm_medium || '',
+    utm_campaign: values.utm_campaign || ''
+  });
+}
+
+captureAttribution();
+
 // Old single-page links (e.g. /#investment) redirect to the new pages
 (function () {
   if (location.pathname !== '/' || !location.hash) return;
@@ -131,6 +232,7 @@ async function submitForm(e, form) {
   }
   btn.textContent = 'Sending…';
   btn.disabled = true;
+  fillAttribution(form);
   var encoded = new URLSearchParams(new FormData(form)).toString();
   try {
     var res = await fetch('/', {
@@ -143,6 +245,7 @@ async function submitForm(e, form) {
       btn.style.background = 'var(--navy)';
       btn.style.color = 'white';
       status.textContent = 'Your inquiry was sent. I\'ll be in touch soon.';
+      pushGenerateLead(form);
     } else {
       btn.textContent = 'Something went wrong — email me directly.';
       status.textContent = 'Something went wrong sending your inquiry. Please email me directly.';
@@ -155,7 +258,8 @@ async function submitForm(e, form) {
   }
 }
 
-// Cookie consent (analytics stays off until accepted)
+// Cookie consent. Analytics cookies stay off until accepted. Consent Mode
+// still sends cookieless pings while consent is denied; this does not change that.
 function showCookieBanner() {
   var b = document.getElementById('cookie-banner');
   if (b) { b.hidden = false; b.querySelector('.cookie-accept').focus(); }
@@ -174,3 +278,6 @@ function setConsent(value) {
     if (b) b.hidden = false;
   }
 })();
+
+fillAllAttributions();
+window.addEventListener('pageshow', fillAllAttributions);
