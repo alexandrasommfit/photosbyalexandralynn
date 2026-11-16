@@ -58,7 +58,8 @@
         0.25,
         0.64,
         0.45
-      ]
+      ],
+      "center": true
     },
     {
       "id": "autumn-03",
@@ -85,24 +86,6 @@
       ]
     },
     {
-      "id": "autumn-04",
-      "category": "portrait",
-      "alt": "Couple sharing a close, smiling moment under golden autumn trees",
-      "widths": [
-        480,
-        800,
-        1200
-      ],
-      "w": 1200,
-      "h": 1708,
-      "focus": [
-        0.224,
-        0.174,
-        0.775,
-        0.592
-      ]
-    },
-    {
       "id": "portrait-02",
       "category": "portrait",
       "alt": "Young woman in a gray sweater resting her cheek on her hand, smiling among autumn trees",
@@ -124,7 +107,51 @@
         0.25,
         0.63,
         0.5
+      ],
+      "center": true
+    },
+    {
+      "id": "autumn-04",
+      "category": "portrait",
+      "alt": "Couple sharing a close, smiling moment under golden autumn trees",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1708,
+      "focus": [
+        0.224,
+        0.174,
+        0.775,
+        0.592
       ]
+    },
+    {
+      "id": "portrait-03",
+      "category": "portrait",
+      "alt": "Close-up of a young woman with auburn hair and bangs smiling softly against a blurred golden field",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1758,
+      "focus": [
+        0.55,
+        0.15,
+        1.0,
+        0.72
+      ],
+      "focus_manual": [
+        0.55,
+        0.15,
+        1.0,
+        0.72
+      ],
+      "center": true
     },
     {
       "id": "autumn-05",
@@ -160,30 +187,6 @@
         0.287,
         0.633,
         0.734
-      ]
-    },
-    {
-      "id": "portrait-03",
-      "category": "portrait",
-      "alt": "Close-up of a young woman with auburn hair and bangs smiling softly against a blurred golden field",
-      "widths": [
-        480,
-        800,
-        1200
-      ],
-      "w": 1200,
-      "h": 1758,
-      "focus": [
-        0.55,
-        0.15,
-        1.0,
-        0.72
-      ],
-      "focus_manual": [
-        0.55,
-        0.15,
-        1.0,
-        0.72
       ]
     },
     {
@@ -244,7 +247,8 @@
         0.2,
         0.66,
         0.4
-      ]
+      ],
+      "center": true
     },
     {
       "id": "autumn-09",
@@ -262,24 +266,6 @@
         0.135,
         0.873,
         0.501
-      ]
-    },
-    {
-      "id": "autumn-10",
-      "category": "portrait",
-      "alt": "Couple smiling at each other beside a river at dusk",
-      "widths": [
-        1200,
-        1920,
-        2560
-      ],
-      "w": 2560,
-      "h": 1707,
-      "focus": [
-        0.285,
-        0.146,
-        0.736,
-        0.689
       ]
     },
     {
@@ -304,7 +290,51 @@
         0.2,
         0.58,
         0.4
+      ],
+      "center": true
+    },
+    {
+      "id": "autumn-10",
+      "category": "portrait",
+      "alt": "Couple smiling at each other beside a river at dusk",
+      "widths": [
+        1200,
+        1920,
+        2560
+      ],
+      "w": 2560,
+      "h": 1707,
+      "focus": [
+        0.285,
+        0.146,
+        0.736,
+        0.689
       ]
+    },
+    {
+      "id": "portrait-06",
+      "category": "portrait",
+      "alt": "Young woman seated with her chin in her hand under willow branches, smiling softly",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1800,
+      "focus": [
+        0.28,
+        0.38,
+        0.58,
+        0.64
+      ],
+      "focus_manual": [
+        0.28,
+        0.38,
+        0.58,
+        0.64
+      ],
+      "center": true
     },
     {
       "id": "autumn-11",
@@ -343,30 +373,6 @@
       ]
     },
     {
-      "id": "portrait-06",
-      "category": "portrait",
-      "alt": "Young woman seated with her chin in her hand under willow branches, smiling softly",
-      "widths": [
-        480,
-        800,
-        1200
-      ],
-      "w": 1200,
-      "h": 1800,
-      "focus": [
-        0.28,
-        0.38,
-        0.58,
-        0.64
-      ],
-      "focus_manual": [
-        0.28,
-        0.38,
-        0.58,
-        0.64
-      ]
-    },
-    {
       "id": "autumn-13",
       "category": "portrait",
       "alt": "Couple embracing in front of a log with golden leaves and sunset light",
@@ -382,24 +388,6 @@
         0.254,
         0.691,
         0.543
-      ]
-    },
-    {
-      "id": "autumn-14",
-      "category": "portrait",
-      "alt": "Couple seated close together against yellow autumn foliage",
-      "widths": [
-        480,
-        800,
-        1200
-      ],
-      "w": 1200,
-      "h": 1592,
-      "focus": [
-        0.3,
-        0.094,
-        0.671,
-        0.525
       ]
     },
     {
@@ -424,6 +412,25 @@
         0.28,
         0.52,
         0.55
+      ],
+      "center": true
+    },
+    {
+      "id": "autumn-14",
+      "category": "portrait",
+      "alt": "Couple seated close together against yellow autumn foliage",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1592,
+      "focus": [
+        0.3,
+        0.094,
+        0.671,
+        0.525
       ]
     }
   ]
