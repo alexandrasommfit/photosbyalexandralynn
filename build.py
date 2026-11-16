@@ -84,11 +84,15 @@ CTX_ASPECTS = {
 }
 
 
-def axis_position(f0, f1, v, bias=0.5):
-    """object-position % that keeps the focus span [f0, f1] inside a window showing fraction v of the image."""
+def axis_position(f0, f1, v, bias=0.5, center=False):
+    """object-position % that keeps the focus span [f0, f1] inside a window showing fraction v of the image.
+    center=True centers the focus span in the window where the image allows it."""
     if v >= 0.999:
         return 50.0
     lo, hi = max((f1 - v) / (1 - v), 0.0), min(f0 / (1 - v), 1.0)
+    if center and lo <= hi:
+        c = (f0 + f1) / 2
+        return round(max(lo, min(hi, (c - v / 2) / (1 - v))) * 100, 1)
     if lo > hi:  # focus is bigger than the window: center it as well as possible
         c = (f0 + f1) / 2
         return round(max(0.0, min(1.0, (c - v / 2) / (1 - v))) * 100, 1)
@@ -101,7 +105,8 @@ def object_position(pid, ctx, y_bias=0.5):
     a = p['w'] / p['h']
     amin, amax = CTX_ASPECTS[ctx]
     vx, vy = min(1.0, amin / a), min(1.0, a / amax)
-    return '%s%% %s%%' % (axis_position(fx0, fx1, vx), axis_position(fy0, fy1, vy, y_bias))
+    c = bool(p.get('center'))
+    return '%s%% %s%%' % (axis_position(fx0, fx1, vx, center=c), axis_position(fy0, fy1, vy, y_bias))
 
 
 def img_tag(pid, sizes, eager=False, ctx='square'):

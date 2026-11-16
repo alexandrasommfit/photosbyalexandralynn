@@ -37,6 +37,31 @@
       ]
     },
     {
+      "id": "portrait-01",
+      "category": "portrait",
+      "alt": "Young woman with long auburn hair and bangs in a gray sweater, smiling beneath golden willow branches",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1614,
+      "focus": [
+        0.38,
+        0.25,
+        0.64,
+        0.45
+      ],
+      "focus_manual": [
+        0.38,
+        0.25,
+        0.64,
+        0.45
+      ],
+      "center": true
+    },
+    {
       "id": "autumn-03",
       "category": "portrait",
       "alt": "Couple in a playful dip beside a river in autumn",
@@ -61,6 +86,31 @@
       ]
     },
     {
+      "id": "portrait-02",
+      "category": "portrait",
+      "alt": "Young woman in a gray sweater resting her cheek on her hand, smiling among autumn trees",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1800,
+      "focus": [
+        0.35,
+        0.25,
+        0.63,
+        0.5
+      ],
+      "focus_manual": [
+        0.35,
+        0.25,
+        0.63,
+        0.5
+      ],
+      "center": true
+    },
+    {
       "id": "autumn-04",
       "category": "portrait",
       "alt": "Couple sharing a close, smiling moment under golden autumn trees",
@@ -77,6 +127,31 @@
         0.775,
         0.592
       ]
+    },
+    {
+      "id": "portrait-03",
+      "category": "portrait",
+      "alt": "Close-up of a young woman with auburn hair and bangs smiling softly against a blurred golden field",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1758,
+      "focus": [
+        0.55,
+        0.15,
+        1.0,
+        0.72
+      ],
+      "focus_manual": [
+        0.55,
+        0.15,
+        1.0,
+        0.72
+      ],
+      "center": true
     },
     {
       "id": "autumn-05",
@@ -151,6 +226,31 @@
       ]
     },
     {
+      "id": "portrait-04",
+      "category": "portrait",
+      "alt": "Young woman in a gray sweater smiling over her shoulder in a field of tall golden grass",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1611,
+      "focus": [
+        0.44,
+        0.2,
+        0.66,
+        0.4
+      ],
+      "focus_manual": [
+        0.44,
+        0.2,
+        0.66,
+        0.4
+      ],
+      "center": true
+    },
+    {
       "id": "autumn-09",
       "category": "portrait",
       "alt": "Woman resting her hand on her partner's shoulder under a soft evening sky",
@@ -169,6 +269,31 @@
       ]
     },
     {
+      "id": "portrait-05",
+      "category": "portrait",
+      "alt": "Young woman hugging her arms and smiling back at the camera in a golden autumn field",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1564,
+      "focus": [
+        0.36,
+        0.2,
+        0.58,
+        0.4
+      ],
+      "focus_manual": [
+        0.36,
+        0.2,
+        0.58,
+        0.4
+      ],
+      "center": true
+    },
+    {
       "id": "autumn-10",
       "category": "portrait",
       "alt": "Couple smiling at each other beside a river at dusk",
@@ -185,6 +310,31 @@
         0.736,
         0.689
       ]
+    },
+    {
+      "id": "portrait-06",
+      "category": "portrait",
+      "alt": "Young woman seated with her chin in her hand under willow branches, smiling softly",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 1800,
+      "focus": [
+        0.28,
+        0.38,
+        0.58,
+        0.64
+      ],
+      "focus_manual": [
+        0.28,
+        0.38,
+        0.58,
+        0.64
+      ],
+      "center": true
     },
     {
       "id": "autumn-11",
@@ -239,6 +389,31 @@
         0.691,
         0.543
       ]
+    },
+    {
+      "id": "portrait-07",
+      "category": "portrait",
+      "alt": "Young woman with long auburn hair seated in tall grass beneath hanging willow branches",
+      "widths": [
+        480,
+        800,
+        1200
+      ],
+      "w": 1200,
+      "h": 800,
+      "focus": [
+        0.36,
+        0.28,
+        0.52,
+        0.55
+      ],
+      "focus_manual": [
+        0.36,
+        0.28,
+        0.52,
+        0.55
+      ],
+      "center": true
     },
     {
       "id": "autumn-14",
