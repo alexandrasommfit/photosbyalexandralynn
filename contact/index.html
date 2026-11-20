@@ -258,6 +258,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
+    <section class="footer-news" aria-labelledby="footer-news-title">
+      <div class="footer-news-copy">
+        <p class="footer-news-kicker">Newsletter</p>
+        <h2 class="footer-news-title" id="footer-news-title">A note from me, now and then</h2>
+        <p class="footer-news-text">Seasonal dates and new work, only when I have something to share.</p>
+      </div>
+      <form class="nform" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="submitNewsletter(event,this)">
+        <input type="hidden" name="form-name" value="newsletter"/>
+        <p class="nform-hp" aria-hidden="true"><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"/></label></p>
+        <div class="nform-row">
+          <div class="nfield">
+            <label for="newsletter-email">Email</label>
+            <input id="newsletter-email" type="email" name="email" required autocomplete="email" inputmode="email" spellcheck="false" placeholder="you@example.com" aria-describedby="newsletter-consent"/>
+          </div>
+          <button type="submit" class="nsub">Subscribe</button>
+        </div>
+        <p class="nform-consent" id="newsletter-consent">By subscribing, you agree that I may email this address. I'll handle it as described in the <a href="/privacy/">Privacy Policy</a>, and you can ask me to stop anytime.</p>
+        <p class="nform-status" role="status" aria-live="polite" tabindex="-1"></p>
+      </form>
+    </section>
+
     <div class="footer-base">
       <p class="footer-copy">&copy; 2026 Photos by Alexandra Lynn · All rights reserved</p>
       <nav class="footer-legal" aria-label="Legal">
