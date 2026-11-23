@@ -258,6 +258,70 @@ async function submitForm(e, form) {
   }
 }
 
+// Footer newsletter (Netlify Forms). Email only: no attribution fields,
+// and no generate_lead event. That event stays limited to inquiry forms.
+function newsletterStatus(form) {
+  var status = form.querySelector('.nform-status');
+  if (!status) {
+    status = document.createElement('p');
+    status.className = 'nform-status';
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    status.tabIndex = -1;
+    form.appendChild(status);
+  }
+  status.classList.remove('is-error');
+  status.textContent = '';
+  return status;
+}
+
+function focusStatus(status) {
+  if (status && status.focus) status.focus();
+}
+
+async function submitNewsletter(e, form) {
+  e.preventDefault();
+  var state = form.getAttribute('data-state');
+  if (state === 'sending' || state === 'done') return;
+  var btn = form.querySelector('.nsub');
+  var email = form.querySelector('input[type="email"]');
+  var status = newsletterStatus(form);
+  var label = btn.getAttribute('data-label') || btn.textContent;
+  btn.setAttribute('data-label', label);
+  form.setAttribute('data-state', 'sending');
+  form.setAttribute('aria-busy', 'true');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  var encoded = new URLSearchParams(new FormData(form)).toString();
+  try {
+    var res = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encoded
+    });
+    if (!res.ok) throw new Error('Form submission failed');
+    form.setAttribute('data-state', 'done');
+    form.classList.add('is-done');
+    if (email) email.disabled = true;
+    status.textContent = 'You\'re on the list. I\'ll write when I have something to share.';
+    focusStatus(status);
+  } catch (err) {
+    form.setAttribute('data-state', '');
+    btn.textContent = label;
+    btn.disabled = false;
+    status.classList.add('is-error');
+    status.appendChild(document.createTextNode('Something went wrong sending that. Email me at '));
+    var link = document.createElement('a');
+    link.href = 'mailto:photosbyalexandralynn@gmail.com';
+    link.textContent = 'photosbyalexandralynn@gmail.com';
+    status.appendChild(link);
+    status.appendChild(document.createTextNode(' and I\'ll add you.'));
+    focusStatus(status);
+  } finally {
+    form.removeAttribute('aria-busy');
+  }
+}
+
 // Cookie consent. Analytics cookies stay off until accepted. Consent Mode
 // still sends cookieless pings while consent is denied; this does not change that.
 function showCookieBanner() {
